@@ -1,0 +1,23 @@
+<% layout('layouts/admin') %>
+    <div class="panel">
+        <div class="panel-heading">
+            <div>
+                <p class="kicker">Cloudinary assets</p>
+                <h2>Recent profile media</h2>
+            </div><span>Latest 100</span>
+        </div>
+        <div class="library-grid">
+            <% images.forEach(image=> { %><a href="/admin/profiles/edit/<%= image.profile?._id %>"><img
+                        src="<%= image.url %>" alt="<%= image.alt %>" loading="lazy">
+                    <div><b>
+                            <%= image.profile?.name || 'Orphaned asset' %>
+                        </b><small>
+                            <%= image.width %> × <%= image.height %> · <%= Math.round((image.bytes || 0) / 1024) %> KB
+                        </small></div>
+                </a>
+                <% }) %>
+        </div>
+        <% if (!images.length) { %>
+            <div class="admin-empty">No profile images uploaded yet.</div>
+            <% } %>
+    </div>

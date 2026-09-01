@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>
+        <%= pageTitle %> — Veloura Admin
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/admin-cover.css">
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <aside class="admin-sidebar" data-admin-sidebar><a class="admin-brand"
+                href="/admin"><span>V</span><b>Veloura</b><small>Administration</small></a>
+            <nav><a class="<%= currentPath === '/admin' ? 'active' : '' %>" href="/admin">Overview</a><a
+                    class="<%= currentPath.startsWith('/admin/profiles') ? 'active' : '' %>"
+                    href="/admin/profiles">Profiles</a><a
+                    class="<%= currentPath.startsWith('/admin/cities') ? 'active' : '' %>"
+                    href="/admin/cities">Cities</a><a
+                    class="<%= currentPath.startsWith('/admin/categories') ? 'active' : '' %>"
+                    href="/admin/categories">Categories</a><a
+                    class="<%= currentPath.startsWith('/admin/media') ? 'active' : '' %>"
+                    href="/admin/media">Media</a><a
+                    class="<%= currentPath.startsWith('/admin/reports') ? 'active' : '' %>"
+                    href="/admin/reports">Reports</a><a
+                    class="<%= currentPath.startsWith('/admin/seo-pages') ? 'active' : '' %>"
+                    href="/admin/seo-pages">SEO pages</a><a
+                    class="<%= currentPath.startsWith('/admin/settings') ? 'active' : '' %>"
+                    href="/admin/settings">Settings</a></nav>
+            <div class="sidebar-footer"><a href="/" target="_blank">View live site ↗</a>
+                <form action="/admin/logout" method="post"><input type="hidden" name="_csrf"
+                        value="<%= csrfToken %>"><button type="submit">Sign out</button></form>
+            </div>
+        </aside>
+        <div class="admin-main">
+            <header class="admin-topbar"><button type="button" class="admin-menu" data-admin-menu>☰</button>
+                <div><span>Workspace</span>
+                    <h1>
+                        <%= pageTitle %>
+                    </h1>
+                </div>
+                <div class="admin-user"><span>
+                        <%= currentAdmin.name.charAt(0) %>
+                    </span>
+                    <div><b>
+                            <%= currentAdmin.name %>
+                        </b><small>
+                            <%= currentAdmin.role %>
+                        </small></div>
+                </div>
+            </header>
+            <main class="admin-content">
+                <% if (flash) { %>
+                    <div class="alert alert--<%= flash.type %>" role="status">
+                        <%= flash.message %>
+                    </div>
+                    <% } %><%- body %>
+            </main>
+        </div>
+    </div>
+    <script src="/js/admin.js" defer></script>
+</body>
+
+</html>

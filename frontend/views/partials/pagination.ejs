@@ -1,0 +1,8 @@
+<% if (pages > 1) { %>
+<nav class="pagination" aria-label="Pagination">
+  <% const params = new URLSearchParams(filters || {}); %>
+  <% if (page > 1) { params.set('page', page - 1); %><a href="?<%= params.toString() %>">← Previous</a><% } %>
+  <span>Page <strong><%= page %></strong> of <%= pages %></span>
+  <% if (page < pages) { params.set('page', page + 1); %><a href="?<%= params.toString() %>">Next →</a><% } %>
+</nav>
+<% } %>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= seo.title %></title>
+  <meta name="description" content="<%= seo.description %>">
+  <meta name="robots" content="<%= seo.robots %>">
+  <% if (seo.canonical) { %><link rel="canonical" href="<%= seo.canonical %>"><% } %>
+  <meta property="og:type" content="<%= seo.type %>">
+  <meta property="og:title" content="<%= seo.title %>">
+  <meta property="og:description" content="<%= seo.description %>">
+  <meta property="og:url" content="<%= seo.canonical %>">
+  <meta property="og:image" content="<%= seo.image %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= seo.title %>">
+  <meta name="twitter:description" content="<%= seo.description %>">
+  <meta name="twitter:image" content="<%= seo.image %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/adult-theme.css">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <% if (jsonLd) { %><script type="application/ld+json"><%- JSON.stringify(jsonLd).replace(/</g, '\\u003c') %></script><% } %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <% if (flash) { %><div class="toast toast--<%= flash.type %>" role="status"><%= flash.message %></div><% } %>
+  <main><%- body %></main>
+  <%- include('../partials/footer') %>
+  <div class="age-gate" data-age-gate hidden>
+    <div class="age-gate__panel" role="dialog" aria-modal="true" aria-labelledby="age-title">
+      <span class="eyebrow">Responsible access</span>
+      <h2 id="age-title">Adults only</h2>
+      <p>This directory is intended only for adults aged 18 or older. By continuing, you confirm that you meet the legal age in your location and agree to our terms.</p>
+      <div class="age-gate__actions"><button class="button button--gold" data-age-accept>I am 18 or older</button><a class="button button--ghost" href="https://www.google.com">Leave site</a></div>
+    </div>
+  </div>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<% layout('layouts/admin') %>
+<form class="editor-form" method="post" action="<%= profile ? `/admin/profiles/${profile._id}?_method=PUT` : '/admin/profiles' %>">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <div class="editor-main">
+    <section class="panel form-section">
+      <div class="panel-heading"><div><p class="kicker">Identity</p><h2>Profile details</h2></div></div>
+      <div class="form-grid">
+        <label class="span-2">Display name *<input name="name" value="<%= profile?.name || '' %>" required maxlength="100"></label>
+        <label class="span-2">URL slug<input name="slug" value="<%= profile?.slug || '' %>" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="Generated from name"></label>
+        <label>City *<select name="city" required><option value="">Choose city</option><% cities.forEach(item => { %><option value="<%= item._id %>" <%= String(profile?.city) === String(item._id) ? 'selected' : '' %>><%= item.name %></option><% }) %></select></label>
+        <label>Category *<select name="category" required><option value="">Choose category</option><% categories.forEach(item => { %><option value="<%= item._id %>" <%= String(profile?.category) === String(item._id) ? 'selected' : '' %>><%= item.name %></option><% }) %></select></label>
+        <label class="span-2">Description *<textarea name="description" rows="8" maxlength="6000" required><%= profile?.description || '' %></textarea></label>
+        <label>Display age<input type="number" name="displayAge" value="<%= profile?.displayAge || '' %>" min="18" max="99"></label>
+        <label>Height (cm)<input type="number" name="heightCm" value="<%= profile?.heightCm || '' %>" min="120" max="220"></label>
+        <label>Area / locality<input name="area" value="<%= profile?.area || '' %>" maxlength="120"></label>
+        <label>Availability<select name="availability"><option value="">Not specified</option><% ['Flexible','Daytime','Evening','Night'].forEach(item => { %><option value="<%= item %>" <%= profile?.availability === item ? 'selected' : '' %>><%= item %></option><% }) %></select></label>
+        <label class="span-2">Languages <small>Comma separated</small><input name="languages" value="<%= profile?.languages?.join(', ') || '' %>" placeholder="Hindi, English"></label>
+        <label>WhatsApp number *<input name="whatsapp" value="<%= profile?.whatsapp || '' %>" inputmode="tel" required placeholder="Country code + number"></label>
+        <label>Phone number<input name="phone" value="<%= profile?.phone || '' %>" inputmode="tel"></label>
+        <label class="span-2">Tags <small>Comma separated</small><input name="tags" value="<%= profile?.tags?.join(', ') || '' %>" placeholder="Independent, Verified"></label>
+      </div>
+    </section>
+    <section class="panel form-section">
+      <div class="panel-heading"><div><p class="kicker">Search presentation</p><h2>SEO metadata</h2></div></div>
+      <div class="form-grid">
+        <label class="span-2">SEO title <small>Up to 70 characters</small><input name="seoTitle" maxlength="70" value="<%= profile?.seoTitle || '' %>"></label>
+        <label class="span-2">SEO description <small>Up to 170 characters</small><textarea name="seoDescription" maxlength="170" rows="3"><%= profile?.seoDescription || '' %></textarea></label>
+        <label class="span-2">Open Graph image URL<input type="url" name="seoOgImage" value="<%= profile?.seoOgImage || '' %>"></label>
+      </div>
+    </section>
+  </div>
+  <aside class="editor-sidebar"><section class="panel form-section">
+    <h2>Publication</h2>
+    <label>Status<select name="status"><% ['draft','published','hidden'].forEach(item => { %><option value="<%= item %>" <%= profile?.status === item ? 'selected' : '' %>><%= item %></option><% }) %></select></label>
+    <label>Profile tier<select name="badge"><% ['NORMAL','HOT','VIP','VVIP'].forEach(item => { %><option value="<%= item %>" <%= (profile?.badge || 'NORMAL') === item ? 'selected' : '' %>><%= item %></option><% }) %></select></label>
+    <label class="toggle"><input type="checkbox" name="featured" <%= profile?.featured ? 'checked' : '' %>><span>Featured profile</span></label>
+    <hr><p class="form-note">Both safeguards are mandatory before publication.</p>
+    <label class="toggle"><input type="checkbox" name="ageVerified" <%= profile?.ageVerified ? 'checked' : '' %>><span>Adult age verified</span></label>
+    <label class="toggle"><input type="checkbox" name="consentVerified" <%= profile?.consentVerified ? 'checked' : '' %>><span>Publication consent verified</span></label>
+    <button class="admin-button admin-button--wide" type="submit"><%= profile ? 'Save changes' : 'Create profile' %></button>
+  </section></aside>
+</form>
+
+<% if (profile) { %>
+<% const coverImage = images.find(image => image.isMain) || null; %>
+<section class="panel form-section cover-editor">
+  <div class="panel-heading"><div><p class="kicker">Primary photo</p><h2>Cover image</h2></div><span>Cloudinary upload</span></div>
+  <div class="cover-editor__body">
+    <% if (coverImage) { %>
+      <div class="cover-preview"><img src="<%= coverImage.url %>" alt="<%= coverImage.alt || `${profile.name} cover image` %>"><span>Current cover</span></div>
+    <% } else { %>
+      <div class="cover-preview cover-preview--empty"><span>No cover uploaded</span></div>
+    <% } %>
+    <form class="upload-box" method="post" action="/admin/profiles/<%= profile._id %>/cover" enctype="multipart/form-data">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <label><%= coverImage ? 'Replace cover image' : 'Upload cover image' %><input type="file" name="coverImage" accept="image/jpeg,image/png,image/webp" required></label>
+      <small>JPEG, PNG, or WebP · Maximum 8 MB · Minimum 500 x 500 px</small>
+      <button class="admin-button" type="submit"><%= coverImage ? 'Replace cover' : 'Upload cover' %></button>
+    </form>
+  </div>
+</section>
+
+<section class="panel form-section media-editor">
+  <div class="panel-heading"><div><p class="kicker">Profile gallery</p><h2>Upload 1–10 photos</h2></div><span><%= images.length %> / 10 images</span></div>
+  <form class="upload-box" method="post" action="/admin/profiles/<%= profile._id %>/images" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Upload JPEG, PNG, or WebP<input type="file" name="images" accept="image/jpeg,image/png,image/webp" multiple required></label>
+    <small>Maximum 8 MB each · Minimum 500 × 500 px · Up to 10 images</small>
+    <button class="admin-button" type="submit">Upload images</button>
+  </form>
+  <% if (images.length) { %>
+  <div class="media-grid" data-sortable>
+    <% images.forEach(image => { %>
+    <article draggable="true" data-image-item data-image-id="<%= image._id %>">
+      <img src="<%= image.url %>" alt="<%= image.alt %>">
+      <div>
+        <% if (image.isMain) { %><span class="status status--published">Cover</span><% } else { %><form method="post" action="/admin/profiles/<%= profile._id %>/images/<%= image._id %>/main"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button class="link-button" type="submit">Make cover</button></form><% } %>
+        <form method="post" action="/admin/profiles/<%= profile._id %>/images/<%= image._id %>?_method=DELETE" data-confirm="Delete this image from Cloudinary?"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button class="link-button link-button--danger" type="submit">Delete</button></form>
+      </div>
+      <form class="replace-form" method="post" enctype="multipart/form-data" action="/admin/profiles/<%= profile._id %>/images/<%= image._id %>/replace"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><label>Replace<input type="file" name="image" accept="image/jpeg,image/png,image/webp" required></label><button class="link-button" type="submit">Upload replacement</button></form>
+    </article>
+    <% }) %>
+  </div>
+  <form method="post" action="/admin/profiles/<%= profile._id %>/images/reorder" data-order-form><input type="hidden" name="_csrf" value="<%= csrfToken %>"><input type="hidden" name="imageIds" data-order-input><button class="admin-button admin-button--subtle" type="submit">Save image order</button></form>
+  <% } %>
+</section>
+<% } %>

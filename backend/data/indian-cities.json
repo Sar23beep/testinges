@@ -1,0 +1,3386 @@
+[
+  {
+    "name": "Delhi",
+    "slug": "delhi",
+    "state": "Delhi",
+    "tier": "Metro",
+    "sortOrder": 1,
+    "active": true,
+    "areas": [
+      "South Delhi",
+      "Aerocity",
+      "Connaught Place",
+      "Vasant Kunj",
+      "Hauz Khas",
+      "Saket",
+      "Greater Kailash 1 & 2",
+      "Dwarka",
+      "Karol Bagh",
+      "Rohini",
+      "Janakpuri",
+      "Lajpat Nagar",
+      "Defence Colony",
+      "Pitampura",
+      "Punjabi Bagh",
+      "Rajouri Garden",
+      "Mayur Vihar",
+      "Nehru Place",
+      "Civil Lines",
+      "Paschim Vihar",
+      "Green Park",
+      "Chanakyapuri",
+      "Malviya Nagar",
+      "Patel Nagar"
+    ]
+  },
+  {
+    "name": "Mumbai",
+    "slug": "mumbai",
+    "state": "Maharashtra",
+    "tier": "Metro",
+    "sortOrder": 2,
+    "active": true,
+    "areas": [
+      "Bandra West",
+      "Andheri West",
+      "Juhu",
+      "South Mumbai",
+      "Powai",
+      "Worli",
+      "Lower Parel",
+      "BKC (Bandra Kurla Complex)",
+      "Colaba",
+      "Santacruz West",
+      "Malad West",
+      "Kandivali West",
+      "Borivali West",
+      "Goregaon West",
+      "Versova",
+      "Dadar",
+      "Chembur",
+      "Ghatkopar",
+      "Lokhandwala",
+      "Marine Drive",
+      "Nariman Point",
+      "Vile Parle",
+      "Khar West",
+      "Prabhadevi"
+    ]
+  },
+  {
+    "name": "Bengaluru",
+    "slug": "bengaluru",
+    "state": "Karnataka",
+    "tier": "Metro",
+    "sortOrder": 3,
+    "active": true,
+    "areas": [
+      "Indiranagar",
+      "Koramangala",
+      "Whitefield",
+      "HSR Layout",
+      "MG Road",
+      "Electronic City",
+      "Marathahalli",
+      "Bellandur",
+      "JP Nagar",
+      "Jayanagar",
+      "Malleshwaram",
+      "Hebbal",
+      "Yelahanka",
+      "Banashankari",
+      "BTM Layout",
+      "Sarjapur Road",
+      "Richmond Town",
+      "Sadashivanagar",
+      "Kalyan Nagar",
+      "Rajajinagar",
+      "Domlur",
+      "Cunningham Road",
+      "Ulsoor",
+      "Banaswadi"
+    ]
+  },
+  {
+    "name": "Hyderabad",
+    "slug": "hyderabad",
+    "state": "Telangana",
+    "tier": "Metro",
+    "sortOrder": 4,
+    "active": true,
+    "areas": [
+      "Banjara Hills",
+      "Jubilee Hills",
+      "Hitec City",
+      "Gachibowli",
+      "Madhapur",
+      "Kondapur",
+      "Begumpet",
+      "Somajiguda",
+      "Kukatpally",
+      "Secunderabad",
+      "Ameerpet",
+      "Manikonda",
+      "Dilsukhnagar",
+      "Film Nagar",
+      "Financial District",
+      "SR Nagar",
+      "Miyapur",
+      "Mehdipatnam",
+      "Uppal",
+      "Bowenpally",
+      "Kavuri Hills",
+      "Tolichowki",
+      "Himayatnagar",
+      "Sainikpuri"
+    ]
+  },
+  {
+    "name": "Chennai",
+    "slug": "chennai",
+    "state": "Tamil Nadu",
+    "tier": "Metro",
+    "sortOrder": 5,
+    "active": true,
+    "areas": [
+      "Nungambakkam",
+      "T. Nagar",
+      "Anna Nagar",
+      "Adyar",
+      "Velachery",
+      "OMR (Old Mahabalipuram Rd)",
+      "ECR (East Coast Road)",
+      "Alwarpet",
+      "Mylapore",
+      "Guindy",
+      "Porur",
+      "Kilpauk",
+      "Besant Nagar",
+      "Vadapalani",
+      "Royapettah",
+      "Thiruvanmiyur",
+      "Kodambakkam",
+      "Egmore",
+      "Chetpet",
+      "Perungudi",
+      "Ashok Nagar",
+      "Gopalapuram",
+      "Sholinganallur",
+      "Pallavaram"
+    ]
+  },
+  {
+    "name": "Kolkata",
+    "slug": "kolkata",
+    "state": "West Bengal",
+    "tier": "Metro",
+    "sortOrder": 6,
+    "active": true,
+    "areas": [
+      "Park Street",
+      "Salt Lake (Sector 1-5)",
+      "New Town",
+      "Ballygunge",
+      "Alipore",
+      "Rajarhat",
+      "South City",
+      "Gariahat",
+      "Behala",
+      "Dum Dum",
+      "Howrah",
+      "Bhowanipore",
+      "Jadavpur",
+      "Lake Town",
+      "EM Bypass",
+      "Tollygunge",
+      "Ruby Area",
+      "Ultadanga",
+      "Shakespeare Sarani",
+      "Kankurgachi",
+      "Southern Avenue",
+      "Prince Anwar Shah Road",
+      "Kasba",
+      "Garia"
+    ]
+  },
+  {
+    "name": "Pune",
+    "slug": "pune",
+    "state": "Maharashtra",
+    "tier": "Tier 1",
+    "sortOrder": 7,
+    "active": true,
+    "areas": [
+      "Koregaon Park",
+      "Kalyani Nagar",
+      "Viman Nagar",
+      "Baner",
+      "Hinjewadi",
+      "Shivaji Nagar",
+      "Kothrud",
+      "Aundh",
+      "Magarpatta City",
+      "Wakad",
+      "Camp",
+      "Hadapsar",
+      "Kharadi",
+      "Pimple Saudagar",
+      "Deccan Gymkhana",
+      "Senapati Bapat Road",
+      "FC Road",
+      "Bavdhan",
+      "Erandwane",
+      "Balewadi",
+      "Model Colony",
+      "Boat Club Road",
+      "Prabhat Road",
+      "Chinchwad"
+    ]
+  },
+  {
+    "name": "Gurugram",
+    "slug": "gurugram",
+    "state": "Haryana",
+    "tier": "Tier 1",
+    "sortOrder": 8,
+    "active": true,
+    "areas": [
+      "DLF Phase 1",
+      "DLF Phase 2",
+      "DLF Phase 3",
+      "DLF Phase 4",
+      "DLF Phase 5",
+      "Cyber City",
+      "Golf Course Road",
+      "Golf Course Extension",
+      "Sohna Road",
+      "MG Road",
+      "Sector 29",
+      "Sector 56",
+      "Sector 57",
+      "Sector 49",
+      "Sector 14",
+      "Sushant Lok 1",
+      "Nirvana Country",
+      "South City 1 & 2",
+      "Sector 48",
+      "Gwal Pahari",
+      "Sector 43",
+      "Sector 24",
+      "Sector 54",
+      "New Gurgaon"
+    ]
+  },
+  {
+    "name": "Noida",
+    "slug": "noida",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 1",
+    "sortOrder": 9,
+    "active": true,
+    "areas": [
+      "Sector 18",
+      "Sector 62",
+      "Sector 137",
+      "Sector 50",
+      "Sector 76",
+      "Sector 75",
+      "Sector 128",
+      "Sector 150",
+      "Sector 104",
+      "Sector 44",
+      "Sector 93",
+      "Sector 15",
+      "Sector 16",
+      "Sector 100",
+      "Sector 144",
+      "Sector 78",
+      "Noida Expressway",
+      "Sector 37",
+      "Sector 12",
+      "Sector 27",
+      "Sector 41",
+      "Sector 74",
+      "Sector 120",
+      "Sector 143"
+    ]
+  },
+  {
+    "name": "Jaipur",
+    "slug": "jaipur",
+    "state": "Rajasthan",
+    "tier": "Tier 1",
+    "sortOrder": 10,
+    "active": true,
+    "areas": [
+      "C-Scheme",
+      "Malviya Nagar",
+      "Vaishali Nagar",
+      "Raja Park",
+      "Mansarovar",
+      "Tonk Road",
+      "MI Road",
+      "Civil Lines",
+      "Jagatpura",
+      "Bapu Nagar",
+      "Gopalpura Bypass",
+      "Bani Park",
+      "Ajmer Road",
+      "Sitapura",
+      "Vidhyadhar Nagar",
+      "Sodala",
+      "Shyam Nagar",
+      "Adarsh Nagar"
+    ]
+  },
+  {
+    "name": "Lucknow",
+    "slug": "lucknow",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 1",
+    "sortOrder": 11,
+    "active": true,
+    "areas": [
+      "Gomti Nagar",
+      "Hazratganj",
+      "Aliganj",
+      "Indira Nagar",
+      "Mahanagar",
+      "Alambagh",
+      "Ashiyana",
+      "Sushant Golf City",
+      "Vikas Nagar",
+      "Vibhuti Khand",
+      "Chowk",
+      "Charbagh",
+      "Jankipuram",
+      "Rajajipuram",
+      "Amar Shaheed Path",
+      "Chinhat",
+      "Singar Nagar",
+      "Vrindavan Yojna"
+    ]
+  },
+  {
+    "name": "Chandigarh",
+    "slug": "chandigarh",
+    "state": "Chandigarh",
+    "tier": "Tier 1",
+    "sortOrder": 12,
+    "active": true,
+    "areas": [
+      "Sector 17",
+      "Sector 35",
+      "Sector 22",
+      "Sector 8 & 9",
+      "Sector 26",
+      "Sector 43",
+      "Sector 7",
+      "Sector 10",
+      "Industrial Area Phase 1 & 2",
+      "Manimajra",
+      "IT Park",
+      "Sector 15",
+      "Sector 34",
+      "Sector 44"
+    ]
+  },
+  {
+    "name": "Indore",
+    "slug": "indore",
+    "state": "Madhya Pradesh",
+    "tier": "Tier 1",
+    "sortOrder": 13,
+    "active": true,
+    "areas": [
+      "Vijay Nagar",
+      "Palasia",
+      "AB Road",
+      "MG Road",
+      "Saket Nagar",
+      "Bhawar Kuan",
+      "Rajwada",
+      "Mahalaxmi Nagar",
+      "Nipania",
+      "Rau",
+      "Annapurna",
+      "Geeta Bhawan",
+      "Scheme 54",
+      "Scheme 78",
+      "Khajrana",
+      "LIG Colony",
+      "Super Corridor",
+      "Bypass Road"
+    ]
+  },
+  {
+    "name": "Kochi",
+    "slug": "kochi",
+    "state": "Kerala",
+    "tier": "Tier 1",
+    "sortOrder": 14,
+    "active": true,
+    "areas": [
+      "Marine Drive",
+      "MG Road",
+      "Kakkanad (Infopark)",
+      "Edappally",
+      "Panampilly Nagar",
+      "Kaloor",
+      "Vyttila",
+      "Fort Kochi",
+      "Kadavanthra",
+      "Palarivattom",
+      "Ravipuram",
+      "Thevara",
+      "Kalamassery",
+      "Aluva",
+      "Tripunithura",
+      "Cherai"
+    ]
+  },
+  {
+    "name": "Coimbatore",
+    "slug": "coimbatore",
+    "state": "Tamil Nadu",
+    "tier": "Tier 1",
+    "sortOrder": 15,
+    "active": true,
+    "areas": [
+      "RS Puram",
+      "Race Course",
+      "Peelamedu",
+      "Gandhipuram",
+      "Saibaba Colony",
+      "Saravanampatti",
+      "Ganapathy",
+      "Ramanathapuram",
+      "Vadavalli",
+      "Singanallur",
+      "Avinashi Road",
+      "Ukkadam",
+      "Kovaipudur"
+    ]
+  },
+  {
+    "name": "Visakhapatnam",
+    "slug": "visakhapatnam",
+    "state": "Andhra Pradesh",
+    "tier": "Tier 1",
+    "sortOrder": 16,
+    "active": true,
+    "areas": [
+      "Beach Road",
+      "Siripuram",
+      "MVP Colony",
+      "Dwaraka Nagar",
+      "Madhurawada",
+      "Gajuwaka",
+      "Rushikonda",
+      "Seethammadhara",
+      "Jagadamba Centre",
+      "Waltair Uplands",
+      "Asilmetta",
+      "Pendurthi",
+      "Yendada"
+    ]
+  },
+  {
+    "name": "Bhopal",
+    "slug": "bhopal",
+    "state": "Madhya Pradesh",
+    "tier": "Tier 1",
+    "sortOrder": 17,
+    "active": true,
+    "areas": [
+      "MP Nagar Zone 1 & 2",
+      "Arera Colony",
+      "Gulmohar",
+      "Shahpura",
+      "Kolar Road",
+      "TT Nagar",
+      "Hoshangabad Road",
+      "Chuna Bhatti",
+      "Malviya Nagar",
+      "Ayodhya Bypass",
+      "Bawadiya Kalan",
+      "Shyamla Hills"
+    ]
+  },
+  {
+    "name": "Patna",
+    "slug": "patna",
+    "state": "Bihar",
+    "tier": "Tier 1",
+    "sortOrder": 18,
+    "active": true,
+    "areas": [
+      "Fraser Road",
+      "Boring Road",
+      "Bailey Road",
+      "Kankarbagh",
+      "Rajendra Nagar",
+      "Patliputra Colony",
+      "Danapur Cantt",
+      "Exhibition Road",
+      "Anisabad",
+      "Ashiana Nagar",
+      "Gola Road",
+      "Raja Bazar",
+      "Saguna More",
+      "SK Puri"
+    ]
+  },
+  {
+    "name": "Nagpur",
+    "slug": "nagpur",
+    "state": "Maharashtra",
+    "tier": "Tier 2",
+    "sortOrder": 19,
+    "active": true,
+    "areas": [
+      "Dharampeth",
+      "Ramdaspeth",
+      "Sadar",
+      "Civil Lines",
+      "Pratap Nagar",
+      "Wardha Road",
+      "Manish Nagar",
+      "Sitabuldi",
+      "Nandanvan",
+      "Laxmi Nagar"
+    ]
+  },
+  {
+    "name": "Nashik",
+    "slug": "nashik",
+    "state": "Maharashtra",
+    "tier": "Tier 2",
+    "sortOrder": 20,
+    "active": true,
+    "areas": [
+      "College Road",
+      "Gangapur Road",
+      "Mahatma Nagar",
+      "Indira Nagar",
+      "Govind Nagar",
+      "Panchavati",
+      "Satpur",
+      "Ambad",
+      "Pathardi Phata",
+      "Nashik Road"
+    ]
+  },
+  {
+    "name": "Thane",
+    "slug": "thane",
+    "state": "Maharashtra",
+    "tier": "Tier 1",
+    "sortOrder": 21,
+    "active": true,
+    "areas": [
+      "Majiwada",
+      "Ghodbunder Road",
+      "Vartak Nagar",
+      "Hiranandani Estate",
+      "Naupada",
+      "Wagle Estate",
+      "Pokhran Road 1 & 2",
+      "Kasarvadavali",
+      "Panchpakhadi",
+      "Kolshet Road",
+      "Vasant Vihar",
+      "Manpada",
+      "Louis Wadi"
+    ]
+  },
+  {
+    "name": "Navi Mumbai",
+    "slug": "navi-mumbai",
+    "state": "Maharashtra",
+    "tier": "Tier 1",
+    "sortOrder": 22,
+    "active": true,
+    "areas": [
+      "Vashi",
+      "Belapur (CBD)",
+      "Nerul",
+      "Kharghar",
+      "Seawoods",
+      "Kopar Khairane",
+      "Airoli",
+      "Sanpada",
+      "Panvel",
+      "Ulwe",
+      "Ghansoli",
+      "Kamothe",
+      "Juinagar",
+      "Taloja"
+    ]
+  },
+  {
+    "name": "Greater Noida",
+    "slug": "greater-noida",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 23,
+    "active": true,
+    "areas": [
+      "Pari Chowk",
+      "Knowledge Park 1, 2, 3",
+      "Alpha 1 & 2",
+      "Beta 1 & 2",
+      "Gamma 1 & 2",
+      "Delta 1 & 2",
+      "Omega 1",
+      "Chi Phi",
+      "Techzone 4",
+      "Ecotech",
+      "Gaur City 1 & 2",
+      "Sector 1",
+      "Sector 16B",
+      "Jaypee Greens"
+    ]
+  },
+  {
+    "name": "Ghaziabad",
+    "slug": "ghaziabad",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 24,
+    "active": true,
+    "areas": [
+      "Indirapuram",
+      "Vaishali",
+      "Kaushambi",
+      "Raj Nagar Extension",
+      "Crossings Republik",
+      "Vasundhara",
+      "Mohan Nagar",
+      "Sahibabad",
+      "Govindpuram",
+      "Shastri Nagar",
+      "Kavi Nagar",
+      "Nehru Nagar"
+    ]
+  },
+  {
+    "name": "Faridabad",
+    "slug": "faridabad",
+    "state": "Haryana",
+    "tier": "Tier 2",
+    "sortOrder": 25,
+    "active": true,
+    "areas": [
+      "Sector 15",
+      "Sector 16",
+      "Sector 21C",
+      "Sector 14",
+      "NIT Faridabad 1-5",
+      "Green Field Colony",
+      "Sector 28",
+      "Neharpar (Greater Faridabad)",
+      "Surajkund",
+      "Mathura Road",
+      "Sector 8",
+      "Sector 31"
+    ]
+  },
+  {
+    "name": "Kanpur",
+    "slug": "kanpur",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 1",
+    "sortOrder": 26,
+    "active": true,
+    "areas": [
+      "Swaroop Nagar",
+      "Civil Lines",
+      "Kakadeo",
+      "Kidwai Nagar",
+      "Arya Nagar",
+      "Tilak Nagar",
+      "Mall Road",
+      "Shyam Nagar",
+      "Govind Nagar",
+      "Cantt Area",
+      "Lajpat Nagar",
+      "Barra",
+      "Pandu Nagar"
+    ]
+  },
+  {
+    "name": "Agra",
+    "slug": "agra",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 27,
+    "active": true,
+    "areas": [
+      "Fatehabad Road",
+      "Sanjay Place",
+      "Civil Lines",
+      "Tajganj",
+      "Kamla Nagar",
+      "Dayalbagh",
+      "Shahganj",
+      "Sadar Bazar",
+      "Khandari",
+      "Sikandra",
+      "MG Road",
+      "Shamsabad Road"
+    ]
+  },
+  {
+    "name": "Varanasi",
+    "slug": "varanasi",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 28,
+    "active": true,
+    "areas": [
+      "Cantt Area",
+      "Sigra",
+      "Bhelupur",
+      "Lanka (BHU)",
+      "Godowlia",
+      "Assi Ghat",
+      "Orderly Bazar",
+      "Mahmoorganj",
+      "Sarnath",
+      "Shivpur",
+      "Pandeypur",
+      "Durgakund"
+    ]
+  },
+  {
+    "name": "Prayagraj",
+    "slug": "prayagraj",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 29,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "George Town",
+      "Tagore Town",
+      "Katra",
+      "Ashok Nagar",
+      "Mumfordganj",
+      "Allahpur",
+      "Lukarganj",
+      "Dhoomanganj",
+      "Naini"
+    ]
+  },
+  {
+    "name": "Meerut",
+    "slug": "meerut",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 30,
+    "active": true,
+    "areas": [
+      "Shastri Nagar",
+      "Civil Lines",
+      "Modipuram",
+      "Kanker Khera",
+      "Sadar Bazar",
+      "Pallavpuram",
+      "Ganga Nagar",
+      "Delhi Road",
+      "Hapur Bypass"
+    ]
+  },
+  {
+    "name": "Bareilly",
+    "slug": "bareilly",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 31,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Rajendra Nagar",
+      "DD Puram",
+      "Pilibhit Bypass",
+      "Janakpuri",
+      "Model Town",
+      "Subhash Nagar",
+      "Izzatnagar"
+    ]
+  },
+  {
+    "name": "Gorakhpur",
+    "slug": "gorakhpur",
+    "state": "Uttar Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 32,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Golghar",
+      "Taramandal",
+      "Medical College Road",
+      "Shahpur",
+      "Mohaddipur",
+      "Betiahata",
+      "Rapti Nagar",
+      "Kunraghat"
+    ]
+  },
+  {
+    "name": "Aligarh",
+    "slug": "aligarh",
+    "state": "Uttar Pradesh",
+    "tier": "Regional",
+    "sortOrder": 33,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Centre Point",
+      "Ramghat Road",
+      "Marris Road",
+      "Dodhpur",
+      "GT Road",
+      "Samad Road",
+      "Swarna Jayanti Nagar"
+    ]
+  },
+  {
+    "name": "Moradabad",
+    "slug": "moradabad",
+    "state": "Uttar Pradesh",
+    "tier": "Regional",
+    "sortOrder": 34,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Ram Ganga Vihar",
+      "Delhi Road",
+      "MDA Colony",
+      "Majhola",
+      "Kanth Road",
+      "Buddhi Vihar"
+    ]
+  },
+  {
+    "name": "Saharanpur",
+    "slug": "saharanpur",
+    "state": "Uttar Pradesh",
+    "tier": "Regional",
+    "sortOrder": 35,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Delhi Road",
+      "Hasanpur",
+      "Court Road",
+      "Mission Compound",
+      "Gill Colony",
+      "Chilkana Road"
+    ]
+  },
+  {
+    "name": "Jhansi",
+    "slug": "jhansi",
+    "state": "Uttar Pradesh",
+    "tier": "Regional",
+    "sortOrder": 36,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Sadar Bazar",
+      "Elite Crossing",
+      "Sipri Bazar",
+      "Nandan Pura",
+      "Gwalior Road",
+      "Kanpur Road"
+    ]
+  },
+  {
+    "name": "Mathura",
+    "slug": "mathura",
+    "state": "Uttar Pradesh",
+    "tier": "Regional",
+    "sortOrder": 37,
+    "active": true,
+    "areas": [
+      "Krishna Nagar",
+      "Civil Lines",
+      "Vrindavan Road",
+      "Highway Plaza Area",
+      "Dampier Nagar",
+      "BSA College Road",
+      "Govardhan Rd"
+    ]
+  },
+  {
+    "name": "Ayodhya",
+    "slug": "ayodhya",
+    "state": "Uttar Pradesh",
+    "tier": "Regional",
+    "sortOrder": 38,
+    "active": true,
+    "areas": [
+      "Ram Janmabhoomi Area",
+      "Naya Ghat",
+      "Faizabad Civil Lines",
+      "Rikabganj",
+      "Devkali",
+      "Hanuman Garhi Area",
+      "Ayodhya Dham"
+    ]
+  },
+  {
+    "name": "Jodhpur",
+    "slug": "jodhpur",
+    "state": "Rajasthan",
+    "tier": "Tier 2",
+    "sortOrder": 39,
+    "active": true,
+    "areas": [
+      "Ratanada",
+      "Shastri Nagar",
+      "Paota",
+      "Sardarpura",
+      "Pal Road",
+      "Chopasni Housing Board",
+      "Air Force Area",
+      "Mandore",
+      "Basni"
+    ]
+  },
+  {
+    "name": "Udaipur",
+    "slug": "udaipur",
+    "state": "Rajasthan",
+    "tier": "Tier 2",
+    "sortOrder": 40,
+    "active": true,
+    "areas": [
+      "Fateh Sagar",
+      "Panchwati",
+      "Sukher",
+      "Hiran Magri",
+      "Saheli Nagar",
+      "Shobhagpura",
+      "Bhuwana",
+      "Goverdhan Vilas",
+      "City Palace Area"
+    ]
+  },
+  {
+    "name": "Kota",
+    "slug": "kota",
+    "state": "Rajasthan",
+    "tier": "Tier 2",
+    "sortOrder": 41,
+    "active": true,
+    "areas": [
+      "Talwandi",
+      "Vigyan Nagar",
+      "Mahaveer Nagar",
+      "Gumanpura",
+      "Rajeev Gandhi Nagar",
+      "Dadabari",
+      "Kunhari",
+      "Indra Vihar",
+      "Coral Park"
+    ]
+  },
+  {
+    "name": "Ajmer",
+    "slug": "ajmer",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 42,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Vaishali Nagar",
+      "Panchsheel Nagar",
+      "Ana Sagar Circular Rd",
+      "Adarsh Nagar",
+      "Kishangarh Road",
+      "Makhupura"
+    ]
+  },
+  {
+    "name": "Bikaner",
+    "slug": "bikaner",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 43,
+    "active": true,
+    "areas": [
+      "Kanta Khaturia Colony",
+      "Rani Bazar",
+      "Sadul Ganj",
+      "Jai Narayan Vyas Colony",
+      "Pawan Puri",
+      "Ganga Shehar",
+      "Napasar Rd"
+    ]
+  },
+  {
+    "name": "Alwar",
+    "slug": "alwar",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 44,
+    "active": true,
+    "areas": [
+      "Moti Doongri",
+      "Company Garden Area",
+      "Manu Marg",
+      "Malviya Nagar",
+      "Neemrana Hub",
+      "Bhiwadi Area",
+      "Scheme 8"
+    ]
+  },
+  {
+    "name": "Bhilwara",
+    "slug": "bhilwara",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 45,
+    "active": true,
+    "areas": [
+      "Subhash Nagar",
+      "Azad Nagar",
+      "Shastri Nagar",
+      "Pur Road",
+      "Bhopal Ganj",
+      "Bada Mandir Area",
+      "Pansal Road"
+    ]
+  },
+  {
+    "name": "Sikar",
+    "slug": "sikar",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 46,
+    "active": true,
+    "areas": [
+      "Piprali Road",
+      "Fatehpur Road",
+      "Nawalgarh Road",
+      "Bajaj Gram",
+      "Radhakishan Pura",
+      "Devipura",
+      "Station Road"
+    ]
+  },
+  {
+    "name": "Jaisalmer",
+    "slug": "jaisalmer",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 47,
+    "active": true,
+    "areas": [
+      "Fort Area",
+      "Sam Sand Dunes",
+      "Hanuman Circle",
+      "Gadisar Lake Area",
+      "Air Force Road",
+      "Amar Sagar"
+    ]
+  },
+  {
+    "name": "Pushkar",
+    "slug": "pushkar",
+    "state": "Rajasthan",
+    "tier": "Regional",
+    "sortOrder": 48,
+    "active": true,
+    "areas": [
+      "Brahma Temple Area",
+      "Pushkar Lake",
+      "Mela Ground",
+      "Marwar Bus Stand",
+      "Panchkund Road",
+      "Jamni Kund"
+    ]
+  },
+  {
+    "name": "Amritsar",
+    "slug": "amritsar",
+    "state": "Punjab",
+    "tier": "Tier 2",
+    "sortOrder": 49,
+    "active": true,
+    "areas": [
+      "Ranjit Avenue (A-D)",
+      "Mall Road",
+      "Lawrence Road",
+      "Model Town",
+      "Green Avenue",
+      "Majitha Road",
+      "Albert Road",
+      "GT Road",
+      "Circular Road",
+      "Basant Avenue",
+      "Airport Road"
+    ]
+  },
+  {
+    "name": "Ludhiana",
+    "slug": "ludhiana",
+    "state": "Punjab",
+    "tier": "Tier 2",
+    "sortOrder": 50,
+    "active": true,
+    "areas": [
+      "Sarabha Nagar",
+      "Model Town",
+      "Ferozepur Road",
+      "Civil Lines",
+      "Mall Road",
+      "BRS Nagar",
+      "South City",
+      "Pakhowal Road",
+      "Dugri",
+      "Gill Road",
+      "Ghumar Mandi",
+      "Kitchlu Nagar"
+    ]
+  },
+  {
+    "name": "Jalandhar",
+    "slug": "jalandhar",
+    "state": "Punjab",
+    "tier": "Tier 2",
+    "sortOrder": 51,
+    "active": true,
+    "areas": [
+      "Model Town",
+      "Civil Lines",
+      "Jalandhar Cantt",
+      "PPR Mall Area",
+      "Rama Mandi",
+      "BMC Chowk",
+      "Urban Estate Phase 1 & 2",
+      "Ladowali Road"
+    ]
+  },
+  {
+    "name": "Patiala",
+    "slug": "patiala",
+    "state": "Punjab",
+    "tier": "Regional",
+    "sortOrder": 52,
+    "active": true,
+    "areas": [
+      "Leela Bhawan",
+      "Model Town",
+      "Urban Estate Phase 1 & 2",
+      "Mall Road",
+      "Baradari",
+      "Chhoti Baradari",
+      "Sirhind Road"
+    ]
+  },
+  {
+    "name": "Bathinda",
+    "slug": "bathinda",
+    "state": "Punjab",
+    "tier": "Regional",
+    "sortOrder": 53,
+    "active": true,
+    "areas": [
+      "Model Town Phase 1-3",
+      "Civil Lines",
+      "Mall Road",
+      "100 Feet Road",
+      "Goniana Road",
+      "Thermal Colony"
+    ]
+  },
+  {
+    "name": "Mohali",
+    "slug": "mohali",
+    "state": "Punjab",
+    "tier": "Tier 2",
+    "sortOrder": 54,
+    "active": true,
+    "areas": [
+      "Sector 70",
+      "Sector 71",
+      "Phase 3B2",
+      "Phase 7",
+      "Phase 5",
+      "Sector 82 (JLPL)",
+      "Phase 10 & 11",
+      "Kharar Road",
+      "Airport Road Mohali"
+    ]
+  },
+  {
+    "name": "Panipat",
+    "slug": "panipat",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 55,
+    "active": true,
+    "areas": [
+      "Model Town",
+      "Sector 11 & 12",
+      "GT Road",
+      "Ansals Sushant City",
+      "HUDA Sector 25",
+      "Assandh Road"
+    ]
+  },
+  {
+    "name": "Ambala",
+    "slug": "ambala",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 56,
+    "active": true,
+    "areas": [
+      "Ambala Cantt",
+      "Ambala City",
+      "Model Town",
+      "Sector 7, 8, 9",
+      "Cloth Market Area",
+      "Jagadhri Road"
+    ]
+  },
+  {
+    "name": "Karnal",
+    "slug": "karnal",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 57,
+    "active": true,
+    "areas": [
+      "Model Town",
+      "Sector 13",
+      "Sector 14",
+      "Sector 6 & 7",
+      "Kunjpura Road",
+      "Mughal Canal",
+      "GT Road"
+    ]
+  },
+  {
+    "name": "Rohtak",
+    "slug": "rohtak",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 58,
+    "active": true,
+    "areas": [
+      "Model Town",
+      "Sector 1-4",
+      "Civil Lines",
+      "Delhi Road",
+      "Subhash Nagar",
+      "IMT Rohtak"
+    ]
+  },
+  {
+    "name": "Hisar",
+    "slug": "hisar",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 59,
+    "active": true,
+    "areas": [
+      "Model Town",
+      "Urban Estate 1 & 2",
+      "Sector 13 & 14",
+      "Delhi Road",
+      "Camp Chowk",
+      "PLA Complex"
+    ]
+  },
+  {
+    "name": "Sonipat",
+    "slug": "sonipat",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 60,
+    "active": true,
+    "areas": [
+      "Sector 14 & 15",
+      "Model Town",
+      "Kundli Industrial Area",
+      "Omaxe City",
+      "TDI City",
+      "Murthal Road"
+    ]
+  },
+  {
+    "name": "Panchkula",
+    "slug": "panchkula",
+    "state": "Haryana",
+    "tier": "Regional",
+    "sortOrder": 61,
+    "active": true,
+    "areas": [
+      "Sector 20",
+      "Sector 4 & 5",
+      "Sector 11 & 12",
+      "Sector 21",
+      "Mansa Devi Complex",
+      "Sector 7 & 8",
+      "Pinjore Kalka Road"
+    ]
+  },
+  {
+    "name": "Dehradun",
+    "slug": "dehradun",
+    "state": "Uttarakhand",
+    "tier": "Tier 2",
+    "sortOrder": 62,
+    "active": true,
+    "areas": [
+      "Rajpur Road",
+      "Jakhan",
+      "Sahastradhara Road",
+      "Clement Town",
+      "Ballupur",
+      "Chakrata Road",
+      "Vasant Vihar",
+      "Hathibarkala",
+      "Dharampur",
+      "Prem Nagar",
+      "GMS Road",
+      "ISBT Area"
+    ]
+  },
+  {
+    "name": "Haridwar",
+    "slug": "haridwar",
+    "state": "Uttarakhand",
+    "tier": "Regional",
+    "sortOrder": 63,
+    "active": true,
+    "areas": [
+      "Ranipur More",
+      "BHEL Township",
+      "Shivalik Nagar",
+      "Har Ki Pauri",
+      "Jwalapur",
+      "Kankhal",
+      "Sidcul Area"
+    ]
+  },
+  {
+    "name": "Rishikesh",
+    "slug": "rishikesh",
+    "state": "Uttarakhand",
+    "tier": "Regional",
+    "sortOrder": 64,
+    "active": true,
+    "areas": [
+      "Tapovan",
+      "Laxman Jhula Area",
+      "Ram Jhula Area",
+      "Muni Ki Reti",
+      "AIIMS Area",
+      "Barrage Road",
+      "Dehradun Road"
+    ]
+  },
+  {
+    "name": "Roorkee",
+    "slug": "roorkee",
+    "state": "Uttarakhand",
+    "tier": "Regional",
+    "sortOrder": 65,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "IIT Roorkee Campus Area",
+      "Delhi Road",
+      "Malviya Chowk",
+      "Solani Puram",
+      "Ganeshpur"
+    ]
+  },
+  {
+    "name": "Haldwani",
+    "slug": "haldwani",
+    "state": "Uttarakhand",
+    "tier": "Regional",
+    "sortOrder": 66,
+    "active": true,
+    "areas": [
+      "Nainital Road",
+      "Kaladhungi Road",
+      "Mukhani",
+      "Tikonia",
+      "Bhotia Parao",
+      "Kathgodam",
+      "Kusumkhera"
+    ]
+  },
+  {
+    "name": "Nainital",
+    "slug": "nainital",
+    "state": "Uttarakhand",
+    "tier": "Regional",
+    "sortOrder": 67,
+    "active": true,
+    "areas": [
+      "Mall Road",
+      "Tallital",
+      "Mallital",
+      "Ayarpatta",
+      "Bhowali",
+      "Pangot",
+      "Sukhatal"
+    ]
+  },
+  {
+    "name": "Shimla",
+    "slug": "shimla",
+    "state": "Himachal Pradesh",
+    "tier": "Regional",
+    "sortOrder": 68,
+    "active": true,
+    "areas": [
+      "Mall Road",
+      "The Ridge",
+      "Sanjauli",
+      "Chotta Shimla",
+      "Kasumpti",
+      "New Shimla",
+      "Jakhu",
+      "Kuftadhar",
+      "Summer Hill"
+    ]
+  },
+  {
+    "name": "Manali",
+    "slug": "manali",
+    "state": "Himachal Pradesh",
+    "tier": "Regional",
+    "sortOrder": 69,
+    "active": true,
+    "areas": [
+      "Mall Road",
+      "Old Manali",
+      "Aleo",
+      "Vashisht",
+      "Naggar Road",
+      "Solang Valley Road",
+      "Prini",
+      "Rangri"
+    ]
+  },
+  {
+    "name": "Dharamshala",
+    "slug": "dharamshala",
+    "state": "Himachal Pradesh",
+    "tier": "Regional",
+    "sortOrder": 70,
+    "active": true,
+    "areas": [
+      "McLeod Ganj",
+      "Bhagsunag",
+      "Kotwali Bazar",
+      "Dharamsala Cantt",
+      "Dharamkot",
+      "Yol Cantt",
+      "Civil Lines"
+    ]
+  },
+  {
+    "name": "Solan",
+    "slug": "solan",
+    "state": "Himachal Pradesh",
+    "tier": "Regional",
+    "sortOrder": 71,
+    "active": true,
+    "areas": [
+      "Mall Road",
+      "Kumarhatti",
+      "Chambaghat",
+      "Kandaghat",
+      "Barog",
+      "Saproon",
+      "Oachghat"
+    ]
+  },
+  {
+    "name": "Srinagar",
+    "slug": "srinagar",
+    "state": "Jammu and Kashmir",
+    "tier": "Tier 2",
+    "sortOrder": 72,
+    "active": true,
+    "areas": [
+      "Rajbagh",
+      "Lal Chowk",
+      "Boulevard Road (Dal Lake)",
+      "Karan Nagar",
+      "Jawahar Nagar",
+      "Hyderpora",
+      "Sanat Nagar",
+      "Nishat"
+    ]
+  },
+  {
+    "name": "Jammu",
+    "slug": "jammu",
+    "state": "Jammu and Kashmir",
+    "tier": "Tier 2",
+    "sortOrder": 73,
+    "active": true,
+    "areas": [
+      "Gandhi Nagar",
+      "Trikuta Nagar",
+      "Channi Himmat",
+      "Bahu Plaza",
+      "Resham Ghar",
+      "R.S. Pura Road",
+      "Jewel Chowk"
+    ]
+  },
+  {
+    "name": "Gwalior",
+    "slug": "gwalior",
+    "state": "Madhya Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 74,
+    "active": true,
+    "areas": [
+      "City Centre",
+      "Lashkar",
+      "Morar",
+      "Thatipur",
+      "Phool Bagh",
+      "Pinto Park",
+      "Alkapuri",
+      "Kampoo",
+      "Maharaj Bada"
+    ]
+  },
+  {
+    "name": "Jabalpur",
+    "slug": "jabalpur",
+    "state": "Madhya Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 75,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Napier Town",
+      "Wright Town",
+      "Gorakhpur",
+      "Vijay Nagar",
+      "Madan Mahal",
+      "Adhartal",
+      "Tilhari"
+    ]
+  },
+  {
+    "name": "Ujjain",
+    "slug": "ujjain",
+    "state": "Madhya Pradesh",
+    "tier": "Regional",
+    "sortOrder": 76,
+    "active": true,
+    "areas": [
+      "Freeganj",
+      "Nanakheda",
+      "Mahakal Area",
+      "Dewas Road",
+      "Sethi Nagar",
+      "Indore Road",
+      "Tower Chowk"
+    ]
+  },
+  {
+    "name": "Sagar",
+    "slug": "sagar",
+    "state": "Madhya Pradesh",
+    "tier": "Regional",
+    "sortOrder": 77,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Makronia",
+      "Gopal Ganj",
+      "Tili Road",
+      "Katra Bazar",
+      "Cantt Area"
+    ]
+  },
+  {
+    "name": "Ratlam",
+    "slug": "ratlam",
+    "state": "Madhya Pradesh",
+    "tier": "Regional",
+    "sortOrder": 78,
+    "active": true,
+    "areas": [
+      "Station Road",
+      "Do Batti",
+      "Kasturba Nagar",
+      "Alkapuri",
+      "Shastri Nagar",
+      "Sailana Road"
+    ]
+  },
+  {
+    "name": "Rewa",
+    "slug": "rewa",
+    "state": "Madhya Pradesh",
+    "tier": "Regional",
+    "sortOrder": 79,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Bodabag",
+      "University Road",
+      "Sirmour Chowk",
+      "Nehru Nagar",
+      "Kothi Compound"
+    ]
+  },
+  {
+    "name": "Satna",
+    "slug": "satna",
+    "state": "Madhya Pradesh",
+    "tier": "Regional",
+    "sortOrder": 80,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Bharhut Nagar",
+      "Pateri",
+      "Rewa Road",
+      "Uchehara Rd",
+      "Mukhtiyar Ganj"
+    ]
+  },
+  {
+    "name": "Chhatrapati Sambhajinagar",
+    "slug": "chhatrapati-sambhajinagar",
+    "state": "Maharashtra",
+    "tier": "Tier 2",
+    "sortOrder": 81,
+    "active": true,
+    "areas": [
+      "CIDCO",
+      "Samarth Nagar",
+      "Cantonment",
+      "Garkheda",
+      "Beed Bypass",
+      "Waluj",
+      "Jalna Road",
+      "Seven Hills",
+      "Prozone Area",
+      "Shahnoorwadi"
+    ]
+  },
+  {
+    "name": "Solapur",
+    "slug": "solapur",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 82,
+    "active": true,
+    "areas": [
+      "Hotgi Road",
+      "Jule Solapur",
+      "Saat Rasta",
+      "Old Pune Naka",
+      "Lashkar",
+      "Navi Peth",
+      "Ashok Chowk",
+      "Bhavani Peth"
+    ]
+  },
+  {
+    "name": "Kolhapur",
+    "slug": "kolhapur",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 83,
+    "active": true,
+    "areas": [
+      "Tarabai Park",
+      "Rajarampuri",
+      "Nagala Park",
+      "Shahupuri",
+      "Kadamwadi",
+      "Ruikar Colony",
+      "Rankala Area",
+      "Circuit House"
+    ]
+  },
+  {
+    "name": "Amravati",
+    "slug": "amravati",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 84,
+    "active": true,
+    "areas": [
+      "Camp",
+      "Rathi Nagar",
+      "Rajapeth",
+      "Gadge Nagar",
+      "Dastur Nagar",
+      "Sai Nagar",
+      "Badnera Road",
+      "Panchavati"
+    ]
+  },
+  {
+    "name": "Sangli",
+    "slug": "sangli",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 85,
+    "active": true,
+    "areas": [
+      "Vishrambag",
+      "Ganpati Peth",
+      "Miraj Road",
+      "Khanbhag",
+      "Gaon Bhag",
+      "Kupwad",
+      "Willingdon College Area"
+    ]
+  },
+  {
+    "name": "Jalgaon",
+    "slug": "jalgaon",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 86,
+    "active": true,
+    "areas": [
+      "Ring Road",
+      "Court Chowk",
+      "Prabhat Colony",
+      "Navi Peth",
+      "Adarsh Nagar",
+      "MIDC",
+      "Jilha Peth"
+    ]
+  },
+  {
+    "name": "Akola",
+    "slug": "akola",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 87,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Kaulkhed",
+      "Gorakshan Road",
+      "Toshniwal Layout",
+      "Ram Nagar",
+      "Old City",
+      "Jatharpeth"
+    ]
+  },
+  {
+    "name": "Latur",
+    "slug": "latur",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 88,
+    "active": true,
+    "areas": [
+      "MIDC",
+      "Ausa Road",
+      "Nanded Road",
+      "Barshi Road",
+      "Khadgaon Road",
+      "Prakash Nagar",
+      "Shyam Nagar"
+    ]
+  },
+  {
+    "name": "Dhule",
+    "slug": "dhule",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 89,
+    "active": true,
+    "areas": [
+      "Deopur",
+      "Agra Road",
+      "Wadbhokhar Road",
+      "Walwadi",
+      "Parola Road",
+      "Old Dhule",
+      "Mahindale"
+    ]
+  },
+  {
+    "name": "Ahmednagar",
+    "slug": "ahmednagar",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 90,
+    "active": true,
+    "areas": [
+      "Savedi",
+      "Pipeline Road",
+      "Station Road",
+      "MIDC",
+      "Bhingar",
+      "Market Yard",
+      "Delhi Gate"
+    ]
+  },
+  {
+    "name": "Kalyan-Dombivli",
+    "slug": "kalyan-dombivli",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 91,
+    "active": true,
+    "areas": [
+      "Khadakpada",
+      "Gandhar Nagar",
+      "Bail Bazar",
+      "Lodha Heaven",
+      "Palava City",
+      "Dombivli Gymkhana",
+      "Manpada Dombivli"
+    ]
+  },
+  {
+    "name": "Vasai-Virar",
+    "slug": "vasai-virar",
+    "state": "Maharashtra",
+    "tier": "Regional",
+    "sortOrder": 92,
+    "active": true,
+    "areas": [
+      "Vasai West",
+      "Manickpur",
+      "Evershine City",
+      "Stella",
+      "Chulne",
+      "Virar West",
+      "Bolinj",
+      "Yashwant Nagar",
+      "Nalasopara West"
+    ]
+  },
+  {
+    "name": "Mysuru",
+    "slug": "mysuru",
+    "state": "Karnataka",
+    "tier": "Tier 2",
+    "sortOrder": 93,
+    "active": true,
+    "areas": [
+      "Gokulam (1-3)",
+      "Jayalakshmipuram",
+      "Kuvempunagar",
+      "Vijayanagar (1-4)",
+      "Saraswathipuram",
+      "Hebbal Industrial Area",
+      "VV Mohalla",
+      "Bannimantap",
+      "Yadavagiri"
+    ]
+  },
+  {
+    "name": "Mangaluru",
+    "slug": "mangaluru",
+    "state": "Karnataka",
+    "tier": "Tier 2",
+    "sortOrder": 94,
+    "active": true,
+    "areas": [
+      "Kadri",
+      "Bejai",
+      "Kodialbail",
+      "Lalbagh",
+      "Hampankatta",
+      "Kankanady",
+      "Bunder",
+      "Surathkal",
+      "Mannagudda",
+      "Falnir"
+    ]
+  },
+  {
+    "name": "Hubballi-Dharwad",
+    "slug": "hubballi-dharwad",
+    "state": "Karnataka",
+    "tier": "Tier 2",
+    "sortOrder": 95,
+    "active": true,
+    "areas": [
+      "Vidyanagar",
+      "Gokul Road",
+      "Keshwapur",
+      "Navanagar",
+      "Shirur Park",
+      "Koppikar Road",
+      "Dharwad Toll Naka",
+      "Sattur"
+    ]
+  },
+  {
+    "name": "Belagavi",
+    "slug": "belagavi",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 96,
+    "active": true,
+    "areas": [
+      "Tilakwadi",
+      "Camp Area",
+      "Khanapur Road",
+      "Hindwadi",
+      "Shastri Nagar",
+      "Udyambag",
+      "Khasbag",
+      "Civil Hospital Area"
+    ]
+  },
+  {
+    "name": "Kalaburagi",
+    "slug": "kalaburagi",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 97,
+    "active": true,
+    "areas": [
+      "Sedam Road",
+      "Aiwan-e-Shahi",
+      "Super Market",
+      "MSK Mill Area",
+      "Brahampur",
+      "Vikas Nagar",
+      "Kuvempu Nagar"
+    ]
+  },
+  {
+    "name": "Ballari",
+    "slug": "ballari",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 98,
+    "active": true,
+    "areas": [
+      "Cantonment",
+      "Gandhi Nagar",
+      "Infantry Road",
+      "Brucepet",
+      "Parvathi Nagar",
+      "Anantapur Road",
+      "Talur Road"
+    ]
+  },
+  {
+    "name": "Davanagere",
+    "slug": "davanagere",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 99,
+    "active": true,
+    "areas": [
+      "MCC 'A' & 'B' Block",
+      "Vidyanagar",
+      "Hadadi Road",
+      "PB Road",
+      "Shamanur Road",
+      "Anjaneya Badavane"
+    ]
+  },
+  {
+    "name": "Shivamogga",
+    "slug": "shivamogga",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 100,
+    "active": true,
+    "areas": [
+      "Gopala",
+      "Vinoba Nagar",
+      "Jayanagar",
+      "Tilak Nagar",
+      "Savalanga Road",
+      "BH Road",
+      "Kuvempu Road"
+    ]
+  },
+  {
+    "name": "Tumakuru",
+    "slug": "tumakuru",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 101,
+    "active": true,
+    "areas": [
+      "SIT Main Road",
+      "Batawadi",
+      "Ashok Nagar",
+      "Gubbi Gate",
+      "Kyathsandra",
+      "SS Puram"
+    ]
+  },
+  {
+    "name": "Udupi",
+    "slug": "udupi",
+    "state": "Karnataka",
+    "tier": "Regional",
+    "sortOrder": 102,
+    "active": true,
+    "areas": [
+      "Manipal",
+      "Kunjibettu",
+      "Brahmagiri",
+      "Ambagilu",
+      "Malpe",
+      "Santhekatte",
+      "Diana Circle"
+    ]
+  },
+  {
+    "name": "Warangal",
+    "slug": "warangal",
+    "state": "Telangana",
+    "tier": "Tier 2",
+    "sortOrder": 103,
+    "active": true,
+    "areas": [
+      "Hanamkonda",
+      "Kazipet",
+      "Subedari",
+      "Nakkalagutta",
+      "Waddepally",
+      "Hunter Road",
+      "Balasamudram",
+      "Mandi Bazar"
+    ]
+  },
+  {
+    "name": "Nizamabad",
+    "slug": "nizamabad",
+    "state": "Telangana",
+    "tier": "Regional",
+    "sortOrder": 104,
+    "active": true,
+    "areas": [
+      "Khaleelwadi",
+      "Bodhan Road",
+      "Armoor Road",
+      "Subhash Nagar",
+      "Kanteshwar",
+      "Pragathi Nagar"
+    ]
+  },
+  {
+    "name": "Karimnagar",
+    "slug": "karimnagar",
+    "state": "Telangana",
+    "tier": "Regional",
+    "sortOrder": 105,
+    "active": true,
+    "areas": [
+      "Collectorate Road",
+      "Mukarampura",
+      "Kashmirgadda",
+      "Jyothinagar",
+      "Vavilalapalli",
+      "Kothirampur"
+    ]
+  },
+  {
+    "name": "Khammam",
+    "slug": "khammam",
+    "state": "Telangana",
+    "tier": "Regional",
+    "sortOrder": 106,
+    "active": true,
+    "areas": [
+      "Wyra Road",
+      "Mamillagudem",
+      "Balanagar",
+      "Rotary Nagar",
+      "Kaviraj Nagar",
+      "Gandi Chowk"
+    ]
+  },
+  {
+    "name": "Vijayawada",
+    "slug": "vijayawada",
+    "state": "Andhra Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 107,
+    "active": true,
+    "areas": [
+      "MG Road",
+      "Benz Circle",
+      "Governorpet",
+      "Suryaraopet",
+      "Auto Nagar",
+      "Labbipet",
+      "Bhavanipuram",
+      "Moghalrajpuram",
+      "Gannavaram"
+    ]
+  },
+  {
+    "name": "Guntur",
+    "slug": "guntur",
+    "state": "Andhra Pradesh",
+    "tier": "Tier 2",
+    "sortOrder": 108,
+    "active": true,
+    "areas": [
+      "Brodipet",
+      "Arundelpet",
+      "Lakshmipuram",
+      "Vidya Nagar",
+      "Pattabhipuram",
+      "Kothapet",
+      "Amaravathi Road",
+      "Old Club Road"
+    ]
+  },
+  {
+    "name": "Nellore",
+    "slug": "nellore",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 109,
+    "active": true,
+    "areas": [
+      "Dargamitta",
+      "Magunta Layout",
+      "Vedayapalem",
+      "Pogathota",
+      "Balaji Nagar",
+      "Stonehousepet",
+      "Kavali Rd"
+    ]
+  },
+  {
+    "name": "Kurnool",
+    "slug": "kurnool",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 110,
+    "active": true,
+    "areas": [
+      "Nandyal Checkpost",
+      "Mourya Inn Area",
+      "Gayatri Estate",
+      "Joharapuram",
+      "Budhawarpet",
+      "Collectorate Area"
+    ]
+  },
+  {
+    "name": "Rajahmundry",
+    "slug": "rajahmundry",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 111,
+    "active": true,
+    "areas": [
+      "Danavaipeta",
+      "Kotipalli Bus Stand Area",
+      "Morampudi",
+      "Aryapuram",
+      "Prakash Nagar",
+      "Lalacheruvu",
+      "Syndicate Bank Colony"
+    ]
+  },
+  {
+    "name": "Tirupati",
+    "slug": "tirupati",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 112,
+    "active": true,
+    "areas": [
+      "Alipiri",
+      "Bhavani Nagar",
+      "Korlagunta",
+      "AIR Bypass Road",
+      "MR Palli",
+      "Renigunta Road",
+      "Padmavathi Puram"
+    ]
+  },
+  {
+    "name": "Kakinada",
+    "slug": "kakinada",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 113,
+    "active": true,
+    "areas": [
+      "Bhanugudi",
+      "Suryaraopeta",
+      "Sarpavaram",
+      "Cinema Road",
+      "Ramanayyapeta",
+      "Collectorate Road",
+      "Jagannaickpur"
+    ]
+  },
+  {
+    "name": "Kadapa",
+    "slug": "kadapa",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 114,
+    "active": true,
+    "areas": [
+      "Nagarajupet",
+      "RTC Bus Stand Area",
+      "Yerramukkapalli",
+      "Mariapuram",
+      "Co-operative Colony",
+      "Akkayapalli"
+    ]
+  },
+  {
+    "name": "Anantapur",
+    "slug": "anantapur",
+    "state": "Andhra Pradesh",
+    "tier": "Regional",
+    "sortOrder": 115,
+    "active": true,
+    "areas": [
+      "Subash Nagar",
+      "Kamalanagar",
+      "Sapthagiri Circle",
+      "Rudrampeta",
+      "Housing Board Colony",
+      "Collectorate Road"
+    ]
+  },
+  {
+    "name": "Madurai",
+    "slug": "madurai",
+    "state": "Tamil Nadu",
+    "tier": "Tier 2",
+    "sortOrder": 116,
+    "active": true,
+    "areas": [
+      "Anna Nagar",
+      "KK Nagar",
+      "Goripalayam",
+      "Tallakulam",
+      "Mattuthavani",
+      "Simmakkal",
+      "Bypass Road",
+      "Villapuram",
+      "SS Colony"
+    ]
+  },
+  {
+    "name": "Tiruchirappalli",
+    "slug": "tiruchirappalli",
+    "state": "Tamil Nadu",
+    "tier": "Tier 2",
+    "sortOrder": 117,
+    "active": true,
+    "areas": [
+      "Thillai Nagar",
+      "Cantonment",
+      "KK Nagar",
+      "Srirangam",
+      "Central Bus Stand Area",
+      "Woraiyur",
+      "Ponmalai",
+      "Vasan Nagar"
+    ]
+  },
+  {
+    "name": "Salem",
+    "slug": "salem",
+    "state": "Tamil Nadu",
+    "tier": "Tier 2",
+    "sortOrder": 118,
+    "active": true,
+    "areas": [
+      "Fairlands",
+      "Alagapuram",
+      "Hasthampatti",
+      "Suramangalam",
+      "Seelanaickenpatti",
+      "Meyyanur",
+      "Ammapet",
+      "Junction Area"
+    ]
+  },
+  {
+    "name": "Tiruppur",
+    "slug": "tiruppur",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 119,
+    "active": true,
+    "areas": [
+      "Avinashi Road",
+      "Kumaran Road",
+      "Dharapuram Road",
+      "Veerapandi",
+      "Rayapuram",
+      "Anupparpalayam",
+      "Palladam Road"
+    ]
+  },
+  {
+    "name": "Erode",
+    "slug": "erode",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 120,
+    "active": true,
+    "areas": [
+      "Perundurai Road",
+      "Brough Road",
+      "Sathy Road",
+      "Moolapalayam",
+      "Surampatti",
+      "Collectorate Area",
+      "Thindal"
+    ]
+  },
+  {
+    "name": "Vellore",
+    "slug": "vellore",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 121,
+    "active": true,
+    "areas": [
+      "Katpadi",
+      "Gandhi Nagar",
+      "Sathuvachari",
+      "Bagayam",
+      "Thorapadi",
+      "Salavanpet",
+      "Arcot Road"
+    ]
+  },
+  {
+    "name": "Tirunelveli",
+    "slug": "tirunelveli",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 122,
+    "active": true,
+    "areas": [
+      "Palayamkottai",
+      "Vannarpettai",
+      "Town Area",
+      "Tirunelveli Junction",
+      "Perumalpuram",
+      "High Ground",
+      "Melapalayam"
+    ]
+  },
+  {
+    "name": "Thoothukudi",
+    "slug": "thoothukudi",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 123,
+    "active": true,
+    "areas": [
+      "Millerpuram",
+      "Polpettai",
+      "Beach Road",
+      "Cruz Fernandez Puram",
+      "Chidambara Nagar",
+      "SIPCOT"
+    ]
+  },
+  {
+    "name": "Dindigul",
+    "slug": "dindigul",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 124,
+    "active": true,
+    "areas": [
+      "Nandavanapatti",
+      "Palani Road",
+      "Trichy Road",
+      "GTN Salai",
+      "Begambur",
+      "Round Road"
+    ]
+  },
+  {
+    "name": "Thanjavur",
+    "slug": "thanjavur",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 125,
+    "active": true,
+    "areas": [
+      "Medical College Road",
+      "Yagappa Nagar",
+      "New Bus Stand Area",
+      "Pillaiyarpatti",
+      "Srinivasapuram",
+      "Karanthai"
+    ]
+  },
+  {
+    "name": "Nagercoil",
+    "slug": "nagercoil",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 126,
+    "active": true,
+    "areas": [
+      "Court Road",
+      "Vadasery",
+      "Kottar",
+      "Chettikulam",
+      "Asaripallam",
+      "Parvathipuram"
+    ]
+  },
+  {
+    "name": "Hosur",
+    "slug": "hosur",
+    "state": "Tamil Nadu",
+    "tier": "Regional",
+    "sortOrder": 127,
+    "active": true,
+    "areas": [
+      "SIPCOT 1 & 2",
+      "Bagalur Road",
+      "Rayakotta Road",
+      "Mathigiri",
+      "Mookandapalli",
+      "Denkanikotta Road"
+    ]
+  },
+  {
+    "name": "Thiruvananthapuram",
+    "slug": "thiruvananthapuram",
+    "state": "Kerala",
+    "tier": "Tier 2",
+    "sortOrder": 128,
+    "active": true,
+    "areas": [
+      "Kowdiar",
+      "Vellayambalam",
+      "Technopark (Kazhakkoottam)",
+      "Pattom",
+      "Vazhuthacaud",
+      "Palayam",
+      "Thampanoor",
+      "Statue",
+      "Sasthamangalam",
+      "Sreekaryam",
+      "Pettah",
+      "Kovalam Beach"
+    ]
+  },
+  {
+    "name": "Kozhikode",
+    "slug": "kozhikode",
+    "state": "Kerala",
+    "tier": "Tier 2",
+    "sortOrder": 129,
+    "active": true,
+    "areas": [
+      "Beach Road",
+      "Mavoor Road",
+      "Calicut Bypass",
+      "Nadakkavu",
+      "Thondayad",
+      "PT Usha Road",
+      "Eranhipalam",
+      "Mananchira",
+      "Medical College Area"
+    ]
+  },
+  {
+    "name": "Thrissur",
+    "slug": "thrissur",
+    "state": "Kerala",
+    "tier": "Tier 2",
+    "sortOrder": 130,
+    "active": true,
+    "areas": [
+      "Swaraj Round",
+      "MG Road",
+      "Poothole",
+      "Puzhakkal",
+      "Ayyanthole",
+      "Mannuthy",
+      "Kuriachira",
+      "Ollur",
+      "Ramavarmapuram"
+    ]
+  },
+  {
+    "name": "Kollam",
+    "slug": "kollam",
+    "state": "Kerala",
+    "tier": "Regional",
+    "sortOrder": 131,
+    "active": true,
+    "areas": [
+      "Asramam",
+      "Chinnakada",
+      "Beach Road",
+      "Kavanad",
+      "Tangasseri",
+      "Kadappakada",
+      "Polayathode",
+      "Ayathil"
+    ]
+  },
+  {
+    "name": "Kannur",
+    "slug": "kannur",
+    "state": "Kerala",
+    "tier": "Regional",
+    "sortOrder": 132,
+    "active": true,
+    "areas": [
+      "Thana",
+      "Payyambalam",
+      "South Bazar",
+      "Caltex",
+      "Talap",
+      "Pallikkunnu",
+      "Mele Chovva"
+    ]
+  },
+  {
+    "name": "Alappuzha",
+    "slug": "alappuzha",
+    "state": "Kerala",
+    "tier": "Regional",
+    "sortOrder": 133,
+    "active": true,
+    "areas": [
+      "VCSB Road",
+      "Mullakkal",
+      "Alappuzha Beach",
+      "Thathampally",
+      "Punnamada",
+      "Kalavoor"
+    ]
+  },
+  {
+    "name": "Kottayam",
+    "slug": "kottayam",
+    "state": "Kerala",
+    "tier": "Regional",
+    "sortOrder": 134,
+    "active": true,
+    "areas": [
+      "Collectorate Area",
+      "Nagampadam",
+      "Kanjikuzhy",
+      "Baker Junction",
+      "Ettumanoor",
+      "Changanassery Road"
+    ]
+  },
+  {
+    "name": "Palakkad",
+    "slug": "palakkad",
+    "state": "Kerala",
+    "tier": "Regional",
+    "sortOrder": 135,
+    "active": true,
+    "areas": [
+      "Chandranagar",
+      "Kalpathy",
+      "Civil Station Area",
+      "Stadium Bus Stand",
+      "Kallekkad",
+      "Pirayiri"
+    ]
+  },
+  {
+    "name": "Howrah",
+    "slug": "howrah",
+    "state": "West Bengal",
+    "tier": "Tier 2",
+    "sortOrder": 136,
+    "active": true,
+    "areas": [
+      "Shibpur",
+      "Mandirtala",
+      "Salkia",
+      "Bally",
+      "Liluah",
+      "Santragachi",
+      "Kadamtala",
+      "Andul Road"
+    ]
+  },
+  {
+    "name": "Siliguri",
+    "slug": "siliguri",
+    "state": "West Bengal",
+    "tier": "Tier 2",
+    "sortOrder": 137,
+    "active": true,
+    "areas": [
+      "Sevoke Road",
+      "Pradhan Nagar",
+      "Matigara",
+      "Hakim Para",
+      "College Para",
+      "City Centre Area",
+      "Salugara",
+      "Hill Cart Road"
+    ]
+  },
+  {
+    "name": "Durgapur",
+    "slug": "durgapur",
+    "state": "West Bengal",
+    "tier": "Tier 2",
+    "sortOrder": 138,
+    "active": true,
+    "areas": [
+      "City Centre",
+      "Benachity",
+      "Bidhannagar",
+      "Muchipara",
+      "Steel Township",
+      "Fuljhore",
+      "Amravati Colony"
+    ]
+  },
+  {
+    "name": "Asansol",
+    "slug": "asansol",
+    "state": "West Bengal",
+    "tier": "Tier 2",
+    "sortOrder": 139,
+    "active": true,
+    "areas": [
+      "Burnpur",
+      "Ushagram",
+      "Hutton Road",
+      "Kalyanpur",
+      "SB Gorai Road",
+      "Court Area",
+      "Chelidanga"
+    ]
+  },
+  {
+    "name": "Kharagpur",
+    "slug": "kharagpur",
+    "state": "West Bengal",
+    "tier": "Regional",
+    "sortOrder": 140,
+    "active": true,
+    "areas": [
+      "IIT Campus Area",
+      "Prembazar",
+      "Malancha",
+      "Gole Bazar",
+      "Chhota Tengra",
+      "Kharida"
+    ]
+  },
+  {
+    "name": "Bardhaman",
+    "slug": "bardhaman",
+    "state": "West Bengal",
+    "tier": "Regional",
+    "sortOrder": 141,
+    "active": true,
+    "areas": [
+      "Curzon Gate Area",
+      "Badamtala",
+      "Borehat",
+      "Nutanganj",
+      "Golapbag",
+      "Ullhas"
+    ]
+  },
+  {
+    "name": "Malda",
+    "slug": "malda",
+    "state": "West Bengal",
+    "tier": "Regional",
+    "sortOrder": 142,
+    "active": true,
+    "areas": [
+      "English Bazar",
+      "Mahanandapally",
+      "Kutubpur",
+      "Rathbari",
+      "Singatala",
+      "Mokdumpur"
+    ]
+  },
+  {
+    "name": "Gaya",
+    "slug": "gaya",
+    "state": "Bihar",
+    "tier": "Regional",
+    "sortOrder": 143,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "AP Colony",
+      "Rampur",
+      "Bodhgaya Area",
+      "Station Road",
+      "Anugrah Puri",
+      "Delha"
+    ]
+  },
+  {
+    "name": "Bhagalpur",
+    "slug": "bhagalpur",
+    "state": "Bihar",
+    "tier": "Regional",
+    "sortOrder": 144,
+    "active": true,
+    "areas": [
+      "Adampur",
+      "Tilka Manjhi",
+      "Zero Mile",
+      "Ghantaghar",
+      "Khanjarpur",
+      "Naya Bazar",
+      "Aliganj"
+    ]
+  },
+  {
+    "name": "Muzaffarpur",
+    "slug": "muzaffarpur",
+    "state": "Bihar",
+    "tier": "Regional",
+    "sortOrder": 145,
+    "active": true,
+    "areas": [
+      "Club Road",
+      "Mithanpura",
+      "Damuchak",
+      "Aghoria Bazar",
+      "Brahmpura",
+      "Kalyani",
+      "Bairiya"
+    ]
+  },
+  {
+    "name": "Darbhanga",
+    "slug": "darbhanga",
+    "state": "Bihar",
+    "tier": "Regional",
+    "sortOrder": 146,
+    "active": true,
+    "areas": [
+      "Laheriasarai",
+      "Tower Chowk",
+      "Benta",
+      "Donar",
+      "Allalpatti",
+      "Darbhanga Fort Area"
+    ]
+  },
+  {
+    "name": "Purnia",
+    "slug": "purnia",
+    "state": "Bihar",
+    "tier": "Regional",
+    "sortOrder": 147,
+    "active": true,
+    "areas": [
+      "Line Bazar",
+      "Bhatta Bazar",
+      "Navratan Hatta",
+      "Madhubani Bazar",
+      "Gulabbagh",
+      "Rambagh"
+    ]
+  },
+  {
+    "name": "Ranchi",
+    "slug": "ranchi",
+    "state": "Jharkhand",
+    "tier": "Tier 2",
+    "sortOrder": 148,
+    "active": true,
+    "areas": [
+      "Harmu Housing Colony",
+      "Kanke Road",
+      "Lalpur",
+      "Doranda",
+      "Morabadi",
+      "Hinoo",
+      "Main Road",
+      "Ashok Nagar",
+      "Bariatu",
+      "Ratu Road",
+      "Namkum",
+      "Argora",
+      "Circular Road"
+    ]
+  },
+  {
+    "name": "Jamshedpur",
+    "slug": "jamshedpur",
+    "state": "Jharkhand",
+    "tier": "Tier 2",
+    "sortOrder": 149,
+    "active": true,
+    "areas": [
+      "Bistupur",
+      "Sakchi",
+      "Kadma",
+      "Sonari",
+      "Telco Colony",
+      "Baridih",
+      "CH Area",
+      "Adityapur",
+      "Golmuri",
+      "Jugsalai"
+    ]
+  },
+  {
+    "name": "Dhanbad",
+    "slug": "dhanbad",
+    "state": "Jharkhand",
+    "tier": "Tier 2",
+    "sortOrder": 150,
+    "active": true,
+    "areas": [
+      "Bank More",
+      "Saraidhela",
+      "Hirapur",
+      "Bartand",
+      "Steel Gate",
+      "Dhaiya",
+      "Koyla Nagar",
+      "Park Market"
+    ]
+  },
+  {
+    "name": "Bokaro Steel City",
+    "slug": "bokaro-steel-city",
+    "state": "Jharkhand",
+    "tier": "Regional",
+    "sortOrder": 151,
+    "active": true,
+    "areas": [
+      "Sector 4",
+      "Sector 1",
+      "Sector 9",
+      "City Centre",
+      "Chas",
+      "Co-operative Colony",
+      "Sector 12"
+    ]
+  },
+  {
+    "name": "Deoghar",
+    "slug": "deoghar",
+    "state": "Jharkhand",
+    "tier": "Regional",
+    "sortOrder": 152,
+    "active": true,
+    "areas": [
+      "Tower Chowk",
+      "Baidyanath Dham Area",
+      "Castairs Town",
+      "Bilasi Town",
+      "Jasidih",
+      "Kunda"
+    ]
+  },
+  {
+    "name": "Bhubaneswar",
+    "slug": "bhubaneswar",
+    "state": "Odisha",
+    "tier": "Tier 2",
+    "sortOrder": 153,
+    "active": true,
+    "areas": [
+      "Saheed Nagar",
+      "Jaydev Vihar",
+      "Patia",
+      "Nayapalli",
+      "Khandagiri",
+      "Chandrasekharpur",
+      "Master Canteen",
+      "Infocity",
+      "Rasulgarh",
+      "KIIT Square",
+      "Baramunda",
+      "Old Town",
+      "Bapuji Nagar"
+    ]
+  },
+  {
+    "name": "Cuttack",
+    "slug": "cuttack",
+    "state": "Odisha",
+    "tier": "Tier 2",
+    "sortOrder": 154,
+    "active": true,
+    "areas": [
+      "CDA Sector 6-9",
+      "Badambadi",
+      "Link Road",
+      "College Square",
+      "Mangalabag",
+      "Madhupatna",
+      "Choudhury Bazar"
+    ]
+  },
+  {
+    "name": "Rourkela",
+    "slug": "rourkela",
+    "state": "Odisha",
+    "tier": "Regional",
+    "sortOrder": 155,
+    "active": true,
+    "areas": [
+      "Civil Township",
+      "Sector 5, 7, 19",
+      "Koel Nagar",
+      "Chhend Colony",
+      "Panposh",
+      "Udit Nagar"
+    ]
+  },
+  {
+    "name": "Berhampur",
+    "slug": "berhampur",
+    "state": "Odisha",
+    "tier": "Regional",
+    "sortOrder": 156,
+    "active": true,
+    "areas": [
+      "Giri Road",
+      "Courtpeta",
+      "Bhavani Nagar",
+      "Engineering School Road",
+      "Gosaninuagaon",
+      "Gandhi Nagar"
+    ]
+  },
+  {
+    "name": "Sambalpur",
+    "slug": "sambalpur",
+    "state": "Odisha",
+    "tier": "Regional",
+    "sortOrder": 157,
+    "active": true,
+    "areas": [
+      "Dhanupali",
+      "Ainthapali",
+      "Budharaja",
+      "Bareipali",
+      "Farm Road",
+      "Khetrajpur"
+    ]
+  },
+  {
+    "name": "Puri",
+    "slug": "puri",
+    "state": "Odisha",
+    "tier": "Regional",
+    "sortOrder": 158,
+    "active": true,
+    "areas": [
+      "VIP Road",
+      "Sea Beach Road",
+      "Grand Road (Bada Danda)",
+      "Chakratirtha Road",
+      "Baliapanda",
+      "Swargadwar Area"
+    ]
+  },
+  {
+    "name": "Guwahati",
+    "slug": "guwahati",
+    "state": "Assam",
+    "tier": "Tier 2",
+    "sortOrder": 159,
+    "active": true,
+    "areas": [
+      "GS Road",
+      "Christian Basti",
+      "Paltan Bazaar",
+      "Ganeshguri",
+      "Dispur",
+      "Zoo Road (R.G. Baruah Rd)",
+      "Ulubari",
+      "Beltola",
+      "Six Mile",
+      "Jalukbari",
+      "Khanapara",
+      "Bhangagarh",
+      "Uzan Bazar",
+      "Lachit Nagar"
+    ]
+  },
+  {
+    "name": "Silchar",
+    "slug": "silchar",
+    "state": "Assam",
+    "tier": "Regional",
+    "sortOrder": 160,
+    "active": true,
+    "areas": [
+      "Tarapur",
+      "Hospital Road",
+      "Rangirkhari",
+      "Link Road",
+      "Hailakandi Road",
+      "Ambicapatty",
+      "Janiganj"
+    ]
+  },
+  {
+    "name": "Dibrugarh",
+    "slug": "dibrugarh",
+    "state": "Assam",
+    "tier": "Regional",
+    "sortOrder": 161,
+    "active": true,
+    "areas": [
+      "Graham Bazar",
+      "Jalan Nagar",
+      "Amolapatty",
+      "Chowkidinghee",
+      "Mancotta Road",
+      "Naliapool"
+    ]
+  },
+  {
+    "name": "Jorhat",
+    "slug": "jorhat",
+    "state": "Assam",
+    "tier": "Regional",
+    "sortOrder": 162,
+    "active": true,
+    "areas": [
+      "Gar-Ali",
+      "AT Road",
+      "Tarajan",
+      "Na-Ali",
+      "Jail Road",
+      "Kendu Guri",
+      "Barbheta"
+    ]
+  },
+  {
+    "name": "Shillong",
+    "slug": "shillong",
+    "state": "Meghalaya",
+    "tier": "Regional",
+    "sortOrder": 163,
+    "active": true,
+    "areas": [
+      "Police Bazar",
+      "Laitumkhrah",
+      "Risa Colony",
+      "Mawlai",
+      "Nongthymmai",
+      "Labran",
+      "Polo Grounds"
+    ]
+  },
+  {
+    "name": "Agartala",
+    "slug": "agartala",
+    "state": "Tripura",
+    "tier": "Regional",
+    "sortOrder": 164,
+    "active": true,
+    "areas": [
+      "Kunjaban",
+      "Akhaura Road",
+      "Banamalipur",
+      "Radhanagar",
+      "Krishnanagar",
+      "Melarmath",
+      "Indranagar"
+    ]
+  },
+  {
+    "name": "Imphal",
+    "slug": "imphal",
+    "state": "Manipur",
+    "tier": "Regional",
+    "sortOrder": 165,
+    "active": true,
+    "areas": [
+      "Thangal Bazar",
+      "Paona Bazar",
+      "Kangla",
+      "Lamphelpat",
+      "Uripok",
+      "Singjamei",
+      "Babupara"
+    ]
+  },
+  {
+    "name": "Aizawl",
+    "slug": "aizawl",
+    "state": "Mizoram",
+    "tier": "Regional",
+    "sortOrder": 166,
+    "active": true,
+    "areas": [
+      "Zarkawt",
+      "Chanmari",
+      "Dawrpui",
+      "Bawngkawn",
+      "Khatla",
+      "Tuikual",
+      "Kulikawn"
+    ]
+  },
+  {
+    "name": "Dimapur",
+    "slug": "dimapur",
+    "state": "Nagaland",
+    "tier": "Regional",
+    "sortOrder": 167,
+    "active": true,
+    "areas": [
+      "Circular Road",
+      "Nyamo Lotha Road",
+      "Duncan Basti",
+      "Purana Bazar",
+      "Walford",
+      "Chumukedima"
+    ]
+  },
+  {
+    "name": "Gangtok",
+    "slug": "gangtok",
+    "state": "Sikkim",
+    "tier": "Regional",
+    "sortOrder": 168,
+    "active": true,
+    "areas": [
+      "MG Marg",
+      "Deorali",
+      "Tadong",
+      "Development Area",
+      "Ranipool",
+      "Sichey",
+      "Kazi Road"
+    ]
+  },
+  {
+    "name": "Itanagar",
+    "slug": "itanagar",
+    "state": "Arunachal Pradesh",
+    "tier": "Regional",
+    "sortOrder": 169,
+    "active": true,
+    "areas": [
+      "Ganga Market",
+      "0-Point",
+      "Bank Tinali",
+      "Naharlagun",
+      "Chandranagar",
+      "Nirjuli",
+      "E-Sector"
+    ]
+  },
+  {
+    "name": "Panaji",
+    "slug": "panaji",
+    "state": "Goa",
+    "tier": "Regional",
+    "sortOrder": 170,
+    "active": true,
+    "areas": [
+      "Miramar",
+      "Campal",
+      "Fontainhas (Latin Quarter)",
+      "Altinho",
+      "Dona Paula",
+      "Caranzalem",
+      "Ribandar",
+      "Patto Centre"
+    ]
+  },
+  {
+    "name": "Margao",
+    "slug": "margao",
+    "state": "Goa",
+    "tier": "Regional",
+    "sortOrder": 171,
+    "active": true,
+    "areas": [
+      "Comba",
+      "Pajifond",
+      "Fatorda",
+      "Borda",
+      "Aquem",
+      "Gogol",
+      "Colva Road",
+      "Navelim"
+    ]
+  },
+  {
+    "name": "Calangute",
+    "slug": "calangute",
+    "state": "Goa",
+    "tier": "Regional",
+    "sortOrder": 172,
+    "active": true,
+    "areas": [
+      "Calangute Beach",
+      "Tito's Lane Area",
+      "Baga Road",
+      "Candolim Road",
+      "Naika Vaddo",
+      "Umtav Vaddo",
+      "Arpora Road"
+    ]
+  },
+  {
+    "name": "Vasco da Gama",
+    "slug": "vasco-da-gama",
+    "state": "Goa",
+    "tier": "Regional",
+    "sortOrder": 173,
+    "active": true,
+    "areas": [
+      "Airport Road",
+      "Baina",
+      "Chicalim",
+      "Dabolim",
+      "Mangor Hill",
+      "Vaddem",
+      "Mormugao"
+    ]
+  },
+  {
+    "name": "Raipur",
+    "slug": "raipur",
+    "state": "Chhattisgarh",
+    "tier": "Tier 2",
+    "sortOrder": 174,
+    "active": true,
+    "areas": [
+      "Civil Lines",
+      "Shankar Nagar",
+      "VIP Road",
+      "Pandri",
+      "Devendra Nagar",
+      "Telibandha",
+      "Samta Colony",
+      "Tatibandh",
+      "Katora Talab",
+      "Mowa",
+      "Naya Raipur"
+    ]
+  },
+  {
+    "name": "Bhilai",
+    "slug": "bhilai",
+    "state": "Chhattisgarh",
+    "tier": "Regional",
+    "sortOrder": 175,
+    "active": true,
+    "areas": [
+      "Sector 6, 7, 9",
+      "Nehru Nagar",
+      "Civic Centre",
+      "Supela",
+      "Smriti Nagar",
+      "Kohka",
+      "Power House"
+    ]
+  },
+  {
+    "name": "Bilaspur",
+    "slug": "bilaspur",
+    "state": "Chhattisgarh",
+    "tier": "Regional",
+    "sortOrder": 176,
+    "active": true,
+    "areas": [
+      "Vyapar Vihar",
+      "Rajendra Nagar",
+      "Rama Magneto Area",
+      "Link Road",
+      "Civil Lines",
+      "Torwa",
+      "Mangla"
+    ]
+  },
+  {
+    "name": "Korba",
+    "slug": "korba",
+    "state": "Chhattisgarh",
+    "tier": "Regional",
+    "sortOrder": 177,
+    "active": true,
+    "areas": [
+      "Transport Nagar",
+      "TP Nagar",
+      "Niharika",
+      "Balco Nagar",
+      "Darri",
+      "CSEB Colony",
+      "Kosabadi"
+    ]
+  },
+  {
+    "name": "Durg",
+    "slug": "durg",
+    "state": "Chhattisgarh",
+    "tier": "Regional",
+    "sortOrder": 178,
+    "active": true,
+    "areas": [
+      "Padmanabhpur",
+      "Civil Lines",
+      "Station Road",
+      "Potia",
+      "Ganjpara",
+      "Adarsh Nagar"
+    ]
+  },
+  {
+    "name": "Puducherry",
+    "slug": "puducherry",
+    "state": "Puducherry",
+    "tier": "Regional",
+    "sortOrder": 179,
+    "active": true,
+    "areas": [
+      "White Town (French Quarter)",
+      "Heritage Town",
+      "MG Road",
+      "Auroville Area",
+      "ECR Road",
+      "Lawspet",
+      "Muthialpet",
+      "Mission Street",
+      "Beach Promenade"
+    ]
+  }
+]

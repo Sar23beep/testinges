@@ -1,0 +1,56 @@
+<% layout('layouts/admin') %>
+    <div class="metric-grid">
+        <article><small>Total profiles</small><strong>
+                <%= stats.profiles %>
+            </strong><span>
+                <%= stats.published %> published
+            </span></article>
+        <article><small>Active cities</small><strong>
+                <%= stats.cities %>
+            </strong><a href="/admin/cities">Manage cities →</a></article>
+        <article><small>Categories</small><strong>
+                <%= stats.categories %>
+            </strong><a href="/admin/categories">Manage categories →</a></article>
+        <article class="<%= stats.openReports ? 'metric--warning' : '' %>"><small>Open reports</small><strong>
+                <%= stats.openReports %>
+            </strong><a href="/admin/reports?status=open">Review queue →</a></article>
+    </div>
+    <div class="admin-grid">
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="kicker">Quick start</p>
+                    <h2>Directory operations</h2>
+                </div>
+            </div>
+            <div class="quick-grid"><a href="/admin/profiles/create"><span>＋</span><b>Create profile</b><small>Add
+                        content and images</small></a><a href="/admin/cities"><span>⌖</span><b>Manage
+                        cities</b><small>Control location pages</small></a><a
+                    href="/admin/categories"><span>◇</span><b>Manage categories</b><small>Organize
+                        discovery</small></a><a href="/admin/seo-pages"><span>↗</span><b>SEO overrides</b><small>Refine
+                        combination pages</small></a></div>
+        </section>
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="kicker">Moderation</p>
+                    <h2>Recent reports</h2>
+                </div><a href="/admin/reports">View all</a>
+            </div>
+            <% if (recentReports.length) { %>
+                <div class="mini-list">
+                    <% recentReports.forEach(report=> { %><a href="/admin/reports"><span
+                                class="status status--<%= report.status %>">
+                                <%= report.status %>
+                            </span><b>
+                                <%= report.profile?.name || 'General report' %>
+                            </b><small>
+                                <%= report.reason %> · <%= new Date(report.createdAt).toLocaleDateString() %>
+                            </small></a>
+                        <% }) %>
+                </div>
+                <% } else { %>
+                    <div class="admin-empty">No reports have been submitted.</div>
+                    <% } %>
+        </section>
+    </div>

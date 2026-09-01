@@ -1,0 +1,98 @@
+<% layout('layouts/admin') %>
+    <div class="page-actions">
+        <form class="admin-filters" method="get"><input type="search" name="q" value="<%= filters.q || '' %>"
+                placeholder="Search profiles"><select name="city">
+                <option value="">All cities</option>
+                <% cities.forEach(item=> { %><option value="<%= item._id %>" <%=String(filters.city)===String(item._id)
+                        ? 'selected' : '' %>><%= item.name %>
+                    </option>
+                    <% }) %>
+            </select><select name="category">
+                <option value="">All categories</option>
+                <% categories.forEach(item=> { %><option value="<%= item._id %>"
+                        <%=String(filters.category)===String(item._id) ? 'selected' : '' %>><%= item.name %>
+                    </option>
+                    <% }) %>
+            </select><select name="badge">
+                <option value="">All tiers</option>
+                <% ['VVIP','VIP','HOT','NORMAL'].forEach(item=> { %><option <%=filters.badge===item ? 'selected' : '' %>
+                        ><%= item %>
+                    </option>
+                    <% }) %>
+            </select><select name="status">
+                <option value="">All statuses</option>
+                <% ['published','draft','hidden'].forEach(item=> { %><option <%=filters.status===item ? 'selected' : ''
+                        %>><%= item %>
+                    </option>
+                    <% }) %>
+            </select><select name="sort">
+                <option value="newest">Newest</option>
+                <option value="oldest" <%=filters.sort==='oldest' ? 'selected' : '' %>>Oldest</option>
+            </select><button type="submit" class="admin-button admin-button--small">Filter</button></form><a
+            class="admin-button" href="/admin/profiles/create">＋ New profile</a>
+    </div>
+    <div class="panel table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Profile</th>
+                    <th>Location</th>
+                    <th>Tier</th>
+                    <th>Status</th>
+                    <th>Added</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% profiles.forEach(profile=> { %><tr>
+                        <td><b>
+                                <%= profile.name %>
+                            </b><small>/<%= profile.slug %></small></td>
+                        <td>
+                            <%= profile.city?.name || '—' %><small>
+                                    <%= profile.category?.name || '—' %>
+                                </small>
+                        </td>
+                        <td><span class="tier tier--<%= profile.badge.toLowerCase() %>">
+                                <%= profile.badge %>
+                            </span>
+                            <% if (profile.featured) { %><small>Featured</small>
+                                <% } %>
+                        </td>
+                        <td><span class="status status--<%= profile.status %>">
+                                <%= profile.status %>
+                            </span></td>
+                        <td>
+                            <%= new Date(profile.createdAt).toLocaleDateString() %>
+                        </td>
+                        <td class="row-actions"><a href="/admin/profiles/edit/<%= profile._id %>">Edit</a>
+                            <% if (!profile.deletedAt) { %>
+                                <form method="post" action="/admin/profiles/<%= profile._id %>?_method=DELETE"
+                                    data-confirm="Move this profile to deleted items?"><input type="hidden" name="_csrf"
+                                        value="<%= csrfToken %>"><button>Delete</button></form>
+                                <% } else { %>
+                                    <form method="post" action="/admin/profiles/<%= profile._id %>/restore"><input
+                                            type="hidden" name="_csrf" value="<%= csrfToken %>"><button>Restore</button>
+                                    </form>
+                                    <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+        <% if (!profiles.length) { %>
+            <div class="admin-empty">No profiles match these filters.</div>
+            <% } %>
+    </div>
+    <div class="admin-pagination"><span>
+            <%= total %> total
+        </span>
+        <div>
+            <% if (page> 1) { %><a href="?page=<%= page - 1 %>">← Previous</a>
+                <% } %><span>
+                        <%= page %> / <%= Math.max(pages, 1) %>
+                    </span>
+                    <% if (page < pages) { %><a href="?page=<%= page + 1 %>">Next →</a>
+                        <% } %>
+        </div>
+    </div>
