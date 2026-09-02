@@ -6,7 +6,7 @@ function absoluteUrl(req, path = '/') {
 }
 
 function seo(req, values = {}) {
-  const title = values.title || 'Veloura — Discover trusted profiles near you';
+  const title = values.title || 'Sanjana Malhotra — Discover trusted profiles near you';
   const description = values.description || 'Explore verified, independently managed profiles by city and category in a privacy-conscious directory.';
   const canonicalPath = values.canonicalPath || req.path;
   const image = values.image || DEFAULT_IMAGE;

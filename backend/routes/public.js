@@ -6,6 +6,7 @@ const { validationResult } = require('express-validator');
 const City = require('../models/City');
 const Category = require('../models/Category');
 const Profile = require('../models/Profile');
+const ProfileImage = require('../models/ProfileImage');
 const { publishedFilter } = require('../utils/publicQuery');
 const { absoluteUrl } = require('../utils/seo');
 
@@ -31,25 +32,114 @@ router.post('/report', [
 router.get('/category/:categorySlug', asyncHandler(controller.categoryPage));
 router.get('/profile/:profileSlug', asyncHandler(controller.profilePage));
 
+// Google Search Console HTML File Verification Route
+router.get('/google:code([a-zA-Z0-9]+).html', (req, res) => {
+  res.type('text/html').send(`google-site-verification: google${req.params.code}.html`);
+});
+
 router.get('/sitemap.xml', asyncHandler(async (req, res) => {
-  const [cities, categories, profiles, combinations] = await Promise.all([
-    City.find({ active: true }).select('slug updatedAt').lean(), Category.find({ active: true }).select('slug updatedAt').lean(),
-    Profile.find(publishedFilter()).select('slug updatedAt').lean(),
+  const [cities, categories, profiles, images, combinations] = await Promise.all([
+    City.find({ active: true }).select('slug updatedAt name').lean(),
+    Category.find({ active: true }).select('slug updatedAt name').lean(),
+    Profile.find(publishedFilter()).select('_id slug updatedAt name area').lean(),
+    ProfileImage.find({ isMain: true }).select('profile url alt').lean(),
     Profile.aggregate([{ $match: publishedFilter() }, { $group: { _id: { city: '$city', category: '$category' }, updatedAt: { $max: '$updatedAt' } } }])
   ]);
+  const imageMap = new Map(images.map((img) => [String(img.profile), img]));
   const cityMap = new Map(cities.map((item) => [String(item._id), item]));
   const categoryMap = new Map(categories.map((item) => [String(item._id), item]));
-  const entries = [{ path: '/', updatedAt: new Date() },
-    ...cities.map((item) => ({ path: `/${item.slug}`, updatedAt: item.updatedAt })),
-    ...categories.map((item) => ({ path: `/category/${item.slug}`, updatedAt: item.updatedAt })),
-    ...profiles.map((item) => ({ path: `/profile/${item.slug}`, updatedAt: item.updatedAt })),
-    ...combinations.filter((item) => cityMap.has(String(item._id.city)) && categoryMap.has(String(item._id.category))).map((item) => ({ path: `/${cityMap.get(String(item._id.city)).slug}/${categoryMap.get(String(item._id.category)).slug}`, updatedAt: item.updatedAt }))
-  ];
-  const xml = entries.map((entry) => `<url><loc>${absoluteUrl(req, entry.path)}</loc><lastmod>${new Date(entry.updatedAt).toISOString()}</lastmod></url>`).join('');
-  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xml}</urlset>`);
+
+  const urls = [];
+
+  // 1. Home Page
+  urls.push(`  <url>
+    <loc>${absoluteUrl(req, '/')}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>`);
+
+  // 2. Static Legal & Information Pages
+  ['/about', '/terms', '/privacy-policy', '/contact'].forEach((path) => {
+    urls.push(`  <url>
+    <loc>${absoluteUrl(req, path)}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>`);
+  });
+
+  // 3. City Pages
+  cities.forEach((city) => {
+    urls.push(`  <url>
+    <loc>${absoluteUrl(req, `/${city.slug}`)}</loc>
+    <lastmod>${new Date(city.updatedAt || Date.now()).toISOString()}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>`);
+  });
+
+  // 4. Category Pages
+  categories.forEach((cat) => {
+    urls.push(`  <url>
+    <loc>${absoluteUrl(req, `/category/${cat.slug}`)}</loc>
+    <lastmod>${new Date(cat.updatedAt || Date.now()).toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`);
+  });
+
+  // 5. City + Category Combinations
+  combinations.forEach((item) => {
+    const city = cityMap.get(String(item._id.city));
+    const cat = categoryMap.get(String(item._id.category));
+    if (city && cat) {
+      urls.push(`  <url>
+    <loc>${absoluteUrl(req, `/${city.slug}/${cat.slug}`)}</loc>
+    <lastmod>${new Date(item.updatedAt || Date.now()).toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`);
+    }
+  });
+
+  // 6. Profiles with Google Image Sitemap Tags
+  profiles.forEach((profile) => {
+    const img = imageMap.get(String(profile._id));
+    const imageTag = img && img.url ? `
+    <image:image>
+      <image:loc>${img.url.startsWith('http') ? img.url : absoluteUrl(req, img.url)}</image:loc>
+      <image:title>${profile.name || 'Verified Model'}</image:title>
+      <image:caption>${img.alt || `${profile.name} in ${profile.area || ''}`}</image:caption>
+    </image:image>` : '';
+
+    urls.push(`  <url>
+    <loc>${absoluteUrl(req, `/profile/${profile.slug}`)}</loc>
+    <lastmod>${new Date(profile.updatedAt || Date.now()).toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>${imageTag}
+  </url>`);
+  });
+
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urls.join('\n')}
+</urlset>`);
 }));
 
-router.get('/robots.txt', (req, res) => res.type('text/plain').send(`User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /search\nSitemap: ${absoluteUrl(req, '/sitemap.xml')}\n`));
+router.get('/robots.txt', (req, res) => res.type('text/plain').send(
+`User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /search
+Disallow: /api/
+
+# Sitemap location for Google Search Console & Search Engines
+Sitemap: ${absoluteUrl(req, '/sitemap.xml')}
+`
+));
 
 router.get('/:citySlug/:categorySlug', asyncHandler(controller.cityCategoryPage));
 router.get('/:citySlug', asyncHandler(controller.cityPage));

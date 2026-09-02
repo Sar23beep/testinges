@@ -605,46 +605,105 @@ body { background: var(--paper); color: #541029; }
 .age-gate__panel p { color: #865065; }
 .age-gate__actions .button--ghost { color: var(--red); border-color: rgba(217, 16, 63, .25); }
 
-/* Floating WhatsApp FAB Widget */
-.floating-whatsapp {
-  position: fixed;
-  z-index: 99;
-  right: 22px;
-  bottom: 24px;
+/* Fixed Bottom Contact Bar (Mobile & Desktop) */
+body {
+  padding-bottom: 58px;
 }
-.floating-whatsapp__btn {
-  position: relative;
+
+.fixed-bottom-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 52px;
+  z-index: 99999;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 -5px 30px rgba(100, 17, 47, 0.45);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.cta-bar-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 18px;
-  background: linear-gradient(135deg, #25d366, #128c7e);
+  justify-content: center;
+  gap: 9px;
+  height: 100%;
+  padding: 0 14px;
   color: #ffffff !important;
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  font-size: 15px;
   font-weight: 700;
-  font-size: 14px;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  white-space: nowrap;
 }
-.floating-whatsapp__btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 14px 38px rgba(37, 211, 102, 0.6);
+
+.cta-bar-btn:active {
+  filter: brightness(0.9);
+}
+
+/* Call Button: Veloura Luxury Crimson/Ruby Rose Gradient */
+.cta-bar-btn--call {
+  background: linear-gradient(135deg, #6b031b 0%, #9e0b35 50%, #d9103f 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.cta-bar-btn--call:hover {
+  background: linear-gradient(135deg, #850422 0%, #b80d3e 50%, #f42457 100%);
   color: #ffffff !important;
 }
-.floating-whatsapp__pulse {
-  position: absolute;
-  inset: -4px;
-  border-radius: 999px;
-  border: 2px solid rgba(37, 211, 102, 0.65);
-  animation: wa-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
-  pointer-events: none;
+
+/* WhatsApp Button: WhatsApp Emerald Gradient matching site CTAs */
+.cta-bar-btn--whatsapp {
+  background: linear-gradient(135deg, #0e7064 0%, #1ea952 50%, #25d366 100%);
 }
-@keyframes wa-pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.12); opacity: 0; }
-  100% { transform: scale(1.18); opacity: 0; }
+
+.cta-bar-btn--whatsapp:hover {
+  background: linear-gradient(135deg, #128c7e 0%, #22bc5c 50%, #2ee871 100%);
+  color: #ffffff !important;
 }
+
+.cta-bar-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 52px;
+  }
+  .fixed-bottom-cta-bar {
+    height: 48px;
+  }
+  .cta-bar-btn {
+    font-size: 13.5px;
+    gap: 6px;
+    padding: 0 6px;
+  }
+  .cta-bar-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media (max-width: 380px) {
+  .cta-bar-btn {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .cta-bar-icon {
+    width: 15px;
+    height: 15px;
+  }
+}
+
 
 @media (max-width: 960px) {
   .hero__layout {

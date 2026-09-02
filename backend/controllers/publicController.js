@@ -71,7 +71,7 @@ async function home(req, res) {
     featured: hydrated.filter((p) => p.featured).slice(0, 8),
     vvip: sortBadge(hydrated, 'VVIP'), vip: sortBadge(hydrated, 'VIP'), hot: sortBadge(hydrated, 'HOT'),
     recent: [...hydrated].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 8),
-    jsonLd: { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Veloura', url: absoluteUrl(req, '/'), potentialAction: { '@type': 'SearchAction', target: `${absoluteUrl(req, '/search')}?q={search_term_string}`, 'query-input': 'required name=search_term_string' } }
+    jsonLd: { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Sanjana Malhotra', url: absoluteUrl(req, '/'), potentialAction: { '@type': 'SearchAction', target: `${absoluteUrl(req, '/search')}?q={search_term_string}`, 'query-input': 'required name=search_term_string' } }
   });
 }
 
@@ -89,7 +89,7 @@ async function search(req, res) {
     Profile.countDocuments(query), City.find({ active: true }).sort('name').lean(), Category.find({ active: true }).sort('name').lean()
   ]);
   res.render('public/search', {
-    seo: seo(req, { title: q ? `Search results for ${q} — Veloura` : 'Search profiles — Veloura', description: 'Search published profiles by city, category and name.', robots: 'noindex,follow' }),
+    seo: seo(req, { title: q ? `Search results for ${q} — Sanjana Malhotra` : 'Search profiles — Sanjana Malhotra', description: 'Search published profiles by city, category and name.', robots: 'noindex,follow' }),
     profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), cities, categories, filters: req.query, q, jsonLd: null
   });
 }
@@ -105,10 +105,12 @@ async function categoryPage(req, res, next) {
     City.find({ active: true }).sort('name').lean()
   ]);
   const indexable = total > 0;
-  const title = category.seoTitle || `${category.name} profiles — Veloura`;
+  const title = category.seoTitle || `${category.name} Call Girls & Verified Escorts in India | Sanjana Malhotra`;
+  const description = category.seoDescription || `Explore verified ${category.name.toLowerCase()} call girls, VIP models and independent escorts across all major Indian cities. Direct WhatsApp contact on 6351615378.`;
+  const heading = category.h1 || `${category.name} Call Girls & Escorts`;
   res.render('public/listing', {
-    seo: seo(req, { title, description: category.seoDescription || category.description.slice(0, 165), robots: indexable ? 'index,follow' : 'noindex,follow' }),
-    heading: category.h1 || `${category.name} profiles`, intro: category.description, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city: null, category, relatedCities: cities, relatedCategories: [], jsonLd: itemListLd(req, profiles, title)
+    seo: seo(req, { title, description, robots: indexable ? 'index,follow' : 'noindex,follow' }),
+    heading, intro: category.description || description, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city: null, category, relatedCities: cities, relatedCategories: [], jsonLd: itemListLd(req, profiles, title)
   });
 }
 
@@ -121,10 +123,13 @@ async function cityPage(req, res, next) {
     Profile.find(filter).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
     Profile.countDocuments(filter), Category.find({ active: true }).sort('name').lean()
   ]);
-  const title = city.seoTitle || `Profiles in ${city.name} — Veloura`;
+  const title = city.seoTitle || `Call Girls in ${city.name} - 100% Genuine Escorts in ${city.name} | Sanjana Malhotra`;
+  const description = city.seoDescription || `Find verified Call Girls in ${city.name} & independent escorts in ${city.name} (${city.state || 'India'}). Real photos, VIP service, direct WhatsApp 6351615378. 100% genuine independent profiles.`;
+  const heading = city.h1 || `Call Girls in ${city.name} — Verified Escorts & Companions`;
+  const intro = city.description || `Explore 18+ verified call girls, independent escorts and luxury companions in ${city.name}. Connect directly with genuine models on WhatsApp with zero middlemen.`;
   res.render('public/listing', {
-    seo: seo(req, { title, description: city.seoDescription || city.description.slice(0, 165), robots: total ? 'index,follow' : 'noindex,follow' }),
-    heading: city.h1 || `Discover profiles in ${city.name}`, intro: city.description, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city, category: null, relatedCities: [], relatedCategories: categories, jsonLd: itemListLd(req, profiles, title)
+    seo: seo(req, { title, description, robots: total ? 'index,follow' : 'noindex,follow' }),
+    heading, intro, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city, category: null, relatedCities: [], relatedCategories: categories, jsonLd: itemListLd(req, profiles, title)
   });
 }
 
@@ -140,10 +145,13 @@ async function cityCategoryPage(req, res, next) {
     Profile.find(filter).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
     Profile.countDocuments(filter), SeoPage.findOne({ city: city._id, category: category._id }).lean()
   ]);
-  const title = override?.seoTitle || `${category.name} profiles in ${city.name} — Veloura`;
+  const title = override?.seoTitle || `${category.name} Call Girls in ${city.name} - ${category.name} Escorts in ${city.name} | Sanjana Malhotra`;
+  const description = override?.seoDescription || `Book premium ${category.name.toLowerCase()} call girls in ${city.name} & verified escorts. 100% real photos, direct contact on WhatsApp 6351615378.`;
+  const heading = override?.h1 || `${category.name} Call Girls in ${city.name}`;
+  const intro = override?.introContent || `Discover high-class ${category.name.toLowerCase()} call girls and escort services in ${city.name}. Safe, verified, and confidential direct booking.`;
   res.render('public/listing', {
-    seo: seo(req, { title, description: override?.seoDescription || `Explore verified ${category.name.toLowerCase()} profiles in ${city.name}. Browse details and connect directly.`, robots: total && override?.indexable !== false ? 'index,follow' : 'noindex,follow' }),
-    heading: override?.h1 || `${category.name} profiles in ${city.name}`, intro: override?.introContent || `Browse published ${category.name.toLowerCase()} profiles available in ${city.name}.`, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city, category, relatedCities: [], relatedCategories: [], jsonLd: itemListLd(req, profiles, title)
+    seo: seo(req, { title, description, robots: total && override?.indexable !== false ? 'index,follow' : 'noindex,follow' }),
+    heading, intro, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city, category, relatedCities: [], relatedCategories: [], jsonLd: itemListLd(req, profiles, title)
   });
 }
 
@@ -157,9 +165,10 @@ async function profilePage(req, res, next) {
   profile.images = images;
   profile.mainImage = images[0] || null;
   profile.whatsappUrl = whatsappUrl(profile.whatsapp, profile.name);
-  const title = profile.seoTitle || `${profile.name} in ${profile.city.name} — Veloura`;
+  const title = profile.seoTitle || `${profile.name} (${profile.displayAge || 22} Yrs) - Call Girl in ${profile.area || profile.city.name}, ${profile.city.name} | WhatsApp 6351615378`;
+  const description = profile.seoDescription || `Connect directly with ${profile.name}, 18+ verified independent call girl in ${profile.area || profile.city.name}, ${profile.city.name}. Real photos, verified phone and WhatsApp 6351615378.`;
   res.render('public/profile', {
-    seo: seo(req, { title, description: profile.seoDescription || profile.description.slice(0, 165), image: profile.seoOgImage || profile.mainImage?.url, type: 'profile' }),
+    seo: seo(req, { title, description, image: profile.seoOgImage || profile.mainImage?.url, type: 'profile' }),
     profile, related, jsonLd: {
       '@context': 'https://schema.org', '@type': 'ProfilePage', name: title, url: absoluteUrl(req, req.path),
       mainEntity: { '@type': 'Person', name: profile.name, image: images.map((item) => item.url), description: profile.description }
@@ -180,14 +189,14 @@ async function submitReport(req, res) {
 }
 
 function staticPage(view, title, description) {
-  return (req, res) => res.render(`public/${view}`, { seo: seo(req, { title: `${title} — Veloura`, description }), jsonLd: null });
+  return (req, res) => res.render(`public/${view}`, { seo: seo(req, { title: `${title} — Sanjana Malhotra`, description }), jsonLd: null });
 }
 
 module.exports = {
   home, search, categoryPage, cityPage, cityCategoryPage, profilePage, submitReport,
-  about: staticPage('about', 'About', 'Learn about Veloura and our privacy-conscious directory standards.'),
-  contact: staticPage('contact', 'Contact', 'Contact the Veloura directory team.'),
-  privacy: staticPage('privacy', 'Privacy policy', 'Read how Veloura protects personal information and privacy.'),
-  terms: staticPage('terms', 'Terms', 'Terms governing use of the Veloura directory.'),
+  about: staticPage('about', 'About', 'Learn about Sanjana Malhotra and our privacy-conscious directory standards.'),
+  contact: staticPage('contact', 'Contact', 'Contact the Sanjana Malhotra directory team.'),
+  privacy: staticPage('privacy', 'Privacy policy', 'Read how Sanjana Malhotra protects personal information and privacy.'),
+  terms: staticPage('terms', 'Terms', 'Terms governing use of the Sanjana Malhotra directory.'),
   report: staticPage('report', 'Report content', 'Confidentially report unsafe, unlawful or prohibited content.')
 };

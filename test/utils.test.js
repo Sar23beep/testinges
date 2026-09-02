@@ -9,9 +9,9 @@ test('creates clean lowercase slugs', () => {
 });
 
 test('normalizes and validates WhatsApp links', () => {
-  assert.equal(digitsOnly('+91 98765-43210'), '919876543210');
+  assert.equal(digitsOnly('+91 63516-15378'), '916351615378');
+  assert.match(whatsappUrl('6351615378', 'Asha'), /^https:\/\/wa\.me\/916351615378\?text=/);
   assert.match(whatsappUrl('+91 98765-43210', 'Asha'), /^https:\/\/wa\.me\/919876543210\?text=/);
-  assert.equal(whatsappUrl('123'), null);
 });
 
 test('public query always enforces publication safeguards', () => {

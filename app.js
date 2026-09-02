@@ -29,9 +29,14 @@ app.disable('x-powered-by');
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"], styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-      fontSrc: ["'self'", 'https://fonts.gstatic.com'], imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com'],
-      scriptSrc: ["'self'"], connectSrc: ["'self'"], frameAncestors: ["'none'"]
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com', 'https://*.googletagmanager.com', 'https://*.google-analytics.com'],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com', 'https://*.googletagmanager.com', 'https://www.google-analytics.com', 'https://*.google-analytics.com'],
+      connectSrc: ["'self'", 'https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com'],
+      frameSrc: ["'self'", 'https://www.googletagmanager.com'],
+      frameAncestors: ["'none'"]
     }
   },
   crossOriginResourcePolicy: { policy: 'cross-origin' }
@@ -55,11 +60,15 @@ app.use(session(sessionOptions));
 app.use(ensureCsrfToken);
 app.use(flashMiddleware);
 app.use(loadAdmin);
+const { globalWhatsappUrl, PRIMARY_WHATSAPP_NUMBER } = require('./backend/utils/whatsapp');
+
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   res.locals.siteName = 'Veloura';
   res.locals.currentYear = new Date().getFullYear();
   res.locals.querystring = new URLSearchParams(req.query).toString();
+  res.locals.globalWhatsappUrl = globalWhatsappUrl();
+  res.locals.primaryWhatsApp = PRIMARY_WHATSAPP_NUMBER;
   next();
 });
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 500, standardHeaders: 'draft-8', legacyHeaders: false }));

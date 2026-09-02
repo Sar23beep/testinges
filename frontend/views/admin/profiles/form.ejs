@@ -15,8 +15,8 @@
         <label>Area / locality<input name="area" value="<%= profile?.area || '' %>" maxlength="120"></label>
         <label>Availability<select name="availability"><option value="">Not specified</option><% ['Flexible','Daytime','Evening','Night'].forEach(item => { %><option value="<%= item %>" <%= profile?.availability === item ? 'selected' : '' %>><%= item %></option><% }) %></select></label>
         <label class="span-2">Languages <small>Comma separated</small><input name="languages" value="<%= profile?.languages?.join(', ') || '' %>" placeholder="Hindi, English"></label>
-        <label>WhatsApp number *<input name="whatsapp" value="<%= profile?.whatsapp || '' %>" inputmode="tel" required placeholder="Country code + number"></label>
-        <label>Phone number<input name="phone" value="<%= profile?.phone || '' %>" inputmode="tel"></label>
+        <label>WhatsApp number *<input name="whatsapp" value="<%= profile?.whatsapp || '916351615378' %>" inputmode="tel" required placeholder="Country code + number"></label>
+        <label>Phone number<input name="phone" value="<%= profile?.phone || '6351615378' %>" inputmode="tel"></label>
         <label class="span-2">Tags <small>Comma separated</small><input name="tags" value="<%= profile?.tags?.join(', ') || '' %>" placeholder="Independent, Verified"></label>
       </div>
     </section>

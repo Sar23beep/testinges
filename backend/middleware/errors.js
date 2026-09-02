@@ -10,10 +10,10 @@ function errorHandler(error, req, res, next) {
   const view = status === 403 ? 'errors/403' : status === 404 ? 'errors/404' : 'errors/500';
   if (req.accepts('html')) {
     return res.status(status).render(view, {
-      pageTitle: `${status} — Veloura`,
+      pageTitle: `${status} — Sanjana Malhotra`,
       error: process.env.NODE_ENV === 'development' ? error : null,
       jsonLd: null,
-      seo: { title: `${status} — Veloura`, description: 'Error page', canonical: '', image: '', robots: 'noindex,nofollow', type: 'website' }
+      seo: { title: `${status} — Sanjana Malhotra`, description: 'Error page', canonical: '', image: '', robots: 'noindex,nofollow', type: 'website' }
     });
   }
   res.status(status).json({ error: status >= 500 ? 'Internal server error' : error.message });
