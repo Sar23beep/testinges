@@ -12,12 +12,12 @@ When configuring Cloud Run, set these in **Variables & Secrets**:
 | :--- | :--- | :--- |
 | `NODE_ENV` | `production` | Production environment |
 | `PORT` | `8080` | Container port (default on Cloud Run) |
-| `BASE_URL` | `https://your-domain.com` | Your live custom domain or Cloud Run service URL |
-| `MONGODB_URI` | `mongodb+srv://brahmachatterofficial:brahmachatterofficial@cluster0.orn3gbu.mongodb.net/UpdateWebsite?appName=Cluster0` | MongoDB Atlas Connection String |
+| `BASE_URL` | `https://sanjanamalhotra.in` | Live domain URL |
+| `MONGODB_URI` | `mongodb+srv://s26819996_db_user:MyRq1BSWF1IBPbzh@cluster0.lydwalx.mongodb.net/UpdateWebsite` | MongoDB Atlas Connection String |
 | `SESSION_SECRET` | `sanjana-malhotra-secure-production-session-key-32chars` | Minimum 32 characters secret key |
-| `CLOUDINARY_CLOUD_NAME` | `ky6lrihf` | Cloudinary Cloud Name |
-| `CLOUDINARY_API_KEY` | `128765299755175` | Cloudinary API Key |
-| `CLOUDINARY_API_SECRET` | `CUFswZLjMmPRY_lRb6Gjv7Put94` | Cloudinary API Secret |
+| `CLOUDINARY_CLOUD_NAME` | `ym1ricri` | Cloudinary Cloud Name |
+| `CLOUDINARY_API_KEY` | `282696674847366` | Cloudinary API Key |
+| `CLOUDINARY_API_SECRET` | `IFA6LQjrquBvfToDPd_vqPtQaqQ` | Cloudinary API Secret |
 | `ADMIN_EMAIL` | `sharmaishwar1327@gmail.com` | Admin Login Email |
 | `ADMIN_PASSWORD` | `Work@991991` | Admin Login Password |
 | `WHATSAPP_NUMBER` | `6351615378` | Primary WhatsApp & Call Number |
@@ -34,13 +34,10 @@ If you have `gcloud` installed on your terminal:
 # 1. Login to Google Cloud
 gcloud auth login
 
-# 2. Select or create your GCP project
+# 2. Select your GCP project
 gcloud config set project YOUR_PROJECT_ID
 
-# 3. Enable Cloud Run & Cloud Build APIs
-gcloud services enable run.googleapis.com cloudbuild.googleapis.com
-
-# 4. Build and deploy directly from current folder
+# 3. Build and deploy directly from current folder
 gcloud run deploy sanjana-malhotra \
   --source . \
   --region asia-south1 \
@@ -50,7 +47,7 @@ gcloud run deploy sanjana-malhotra \
   --max-instances 10 \
   --memory 512Mi \
   --cpu 1 \
-  --set-env-vars="NODE_ENV=production,PORT=8080,MONGODB_URI=mongodb+srv://brahmachatterofficial:brahmachatterofficial@cluster0.orn3gbu.mongodb.net/UpdateWebsite?appName=Cluster0,SESSION_SECRET=sanjana-malhotra-secure-production-session-key-32chars,CLOUDINARY_CLOUD_NAME=ky6lrihf,CLOUDINARY_API_KEY=128765299755175,CLOUDINARY_API_SECRET=CUFswZLjMmPRY_lRb6Gjv7Put94,ADMIN_EMAIL=sharmaishwar1327@gmail.com,ADMIN_PASSWORD=Work@991991,WHATSAPP_NUMBER=6351615378,DEFAULT_WHATSAPP_NUMBER=916351615378"
+  --set-env-vars="NODE_ENV=production,BASE_URL=https://sanjanamalhotra.in,MONGODB_URI=mongodb+srv://s26819996_db_user:MyRq1BSWF1IBPbzh@cluster0.lydwalx.mongodb.net/UpdateWebsite,SESSION_SECRET=sanjana-malhotra-secure-production-session-key-32chars,CLOUDINARY_CLOUD_NAME=ym1ricri,CLOUDINARY_API_KEY=282696674847366,CLOUDINARY_API_SECRET=IFA6LQjrquBvfToDPd_vqPtQaqQ,ADMIN_EMAIL=sharmaishwar1327@gmail.com,ADMIN_PASSWORD=Work@991991,WHATSAPP_NUMBER=6351615378,DEFAULT_WHATSAPP_NUMBER=916351615378"
 ```
 
 ---
