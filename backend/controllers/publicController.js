@@ -138,10 +138,14 @@ async function cityPage(req, res, next) {
   if (!city) return next();
   const page = pageNumber(req.query.page);
   const filter = publishedFilter({ city: city._id });
-  const [profiles, total, categories] = await Promise.all([
+  const [profiles, total, categories, rawLocalities, nearbyCities] = await Promise.all([
     Profile.find(filter).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
-    Profile.countDocuments(filter), Category.find({ active: true }).sort('name').lean()
+    Profile.countDocuments(filter),
+    Category.find({ active: true }).sort('name').lean(),
+    Profile.distinct('area', filter),
+    City.find({ active: true, _id: { $ne: city._id } }).sort({ sortOrder: 1, name: 1 }).limit(12).lean()
   ]);
+  const localities = (rawLocalities || []).filter(Boolean).slice(0, 15);
   const activeWhatsapp = city.whatsapp || PRIMARY_WHATSAPP_NUMBER;
   const activePhone = city.phone || DEFAULT_CALL_NUMBER;
   city.whatsappUrl = cityWhatsappUrl(city);
@@ -154,7 +158,7 @@ async function cityPage(req, res, next) {
   res.render('public/listing', {
     seo: seo(req, { title, description, robots: total ? 'index,follow' : 'noindex,follow' }),
     heading, intro, profiles: await hydrateProfiles(profiles, city), total, page, pages: Math.ceil(total / PAGE_SIZE),
-    city, category: null, relatedCities: [], relatedCategories: categories,
+    city, category: null, relatedCities: nearbyCities, relatedCategories: categories, localities,
     pagePhone: activePhone, pageWhatsapp: activeWhatsapp, pageWhatsappUrl: city.whatsappUrl,
     displayPhone: displayPhoneNum, displayWhatsapp: displayWhatsappNum,
     jsonLd: {
@@ -176,9 +180,12 @@ async function cityCategoryPage(req, res, next) {
   if (!city || !category) return next();
   const page = pageNumber(req.query.page);
   const filter = publishedFilter({ city: city._id, category: category._id });
-  const [profiles, total, override] = await Promise.all([
+  const [profiles, total, override, otherCategories, otherCities] = await Promise.all([
     Profile.find(filter).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
-    Profile.countDocuments(filter), SeoPage.findOne({ city: city._id, category: category._id }).lean()
+    Profile.countDocuments(filter),
+    SeoPage.findOne({ city: city._id, category: category._id }).lean(),
+    Category.find({ active: true, _id: { $ne: category._id } }).sort('name').limit(8).lean(),
+    City.find({ active: true, _id: { $ne: city._id } }).sort({ sortOrder: 1, name: 1 }).limit(10).lean()
   ]);
   const activeWhatsapp = city.whatsapp || PRIMARY_WHATSAPP_NUMBER;
   const activePhone = city.phone || DEFAULT_CALL_NUMBER;
@@ -192,7 +199,7 @@ async function cityCategoryPage(req, res, next) {
   res.render('public/listing', {
     seo: seo(req, { title, description, robots: total && override?.indexable !== false ? 'index,follow' : 'noindex,follow' }),
     heading, intro, profiles: await hydrateProfiles(profiles, city), total, page, pages: Math.ceil(total / PAGE_SIZE),
-    city, category, relatedCities: [], relatedCategories: [],
+    city, category, relatedCities: otherCities, relatedCategories: otherCategories, localities: [],
     pagePhone: activePhone, pageWhatsapp: activeWhatsapp, pageWhatsappUrl: city.whatsappUrl,
     displayPhone: displayPhoneNum, displayWhatsapp: displayWhatsappNum,
     jsonLd: {

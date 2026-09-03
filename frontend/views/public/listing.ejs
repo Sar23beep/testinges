@@ -40,58 +40,83 @@
 </section>
 
 <% if (city) { %>
-<!-- Rich On-Page SEO Section for Search Engine Rankings -->
-<section class="section section--light seo-guide-section" style="padding: 48px 0; background: #fff;">
-  <div class="container prose" style="max-width: 900px; margin: 0 auto; color: #333; line-height: 1.8;">
-    <span class="eyebrow eyebrow--dark" style="color: #b31b3b; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">City Guide & Standards</span>
-    <h2 style="font-size: 1.85rem; font-family: 'Playfair Display', serif; margin-top: 8px; color: #111;">Top Rated Call Girls & Escort Service in <%= city.name %></h2>
+<!-- Rich On-Page SEO Section for High Keyword Google Rankings -->
+<section class="section section--light seo-guide-section" style="padding: 48px 0; background: #fff; border-top: 1px solid #f0e6e9;">
+  <div class="container prose" style="max-width: 960px; margin: 0 auto; color: #333; line-height: 1.85;">
     
-    <p>Welcome to <strong>Sanjana Malhotra</strong>, India's most trusted 18+ discovery platform for <strong>Call Girls in <%= city.name %></strong> and independent verified escorts. Whether you are visiting <%= city.name %> for a business trip, holiday, or looking for upscale private companionship, our platform connects you directly with top-tier models, VIP companions, independent college girls, and high-profile elite escorts.</p>
+    <% if (typeof localities !== 'undefined' && localities.length > 0) { %>
+    <div style="background: #faf6f7; padding: 18px 24px; border-radius: 12px; margin-bottom: 32px; border: 1px solid #eedde1;">
+      <span style="font-size: 0.85rem; font-weight: 700; color: #800e28; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Popular Areas & Localities in <%= city.name %>:</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <% localities.forEach(loc => { %>
+          <span style="background: #fff; border: 1px solid #e2ccd2; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; color: #551020; font-weight: 500;">
+            📍 <%= loc %> Call Girls
+          </span>
+        <% }) %>
+      </div>
+    </div>
+    <% } %>
+
+    <span class="eyebrow eyebrow--dark" style="color: #b31b3b; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">100% Genuine Directory</span>
+    <h2 style="font-size: 1.95rem; font-family: 'Playfair Display', serif; margin-top: 8px; color: #111;">Verified Call Girls in <%= city.name %> &amp; Luxury Escort Service</h2>
     
-    <h3 style="font-size: 1.35rem; margin-top: 24px; color: #111;">Why Choose Independent Call Girls in <%= city.name %>?</h3>
-    <ul style="padding-left: 20px; margin-bottom: 20px;">
-      <li><strong>100% Verified Genuine Photos:</strong> Every model photo is verified with zero fake or misleading stock images.</li>
-      <li><strong>Direct WhatsApp & Call Contact:</strong> Connect directly with verified models without brokers, agency commissions, or third-party delays.</li>
-      <li><strong>Complete Discretion & Privacy:</strong> Safe, confidential, and judgment-free meetings tailored to your convenience across top hotels and residences in <%= city.name %>.</li>
-      <li><strong>Zero Advance Frauds:</strong> Transparent independent interactions with genuine companions.</li>
+    <p>Welcome to <strong>Sanjana Malhotra</strong>, India's leading discovery network for <strong>Call Girls in <%= city.name %></strong>, verified independent escorts, and VIP companions. Whether you are traveling for executive business, unwinding on holiday, or seeking discreet five-star companionship, our platform gives you 100% direct access to verified models across <%= city.name %> with complete transparency and zero middlemen.</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 28px 0;">
+      <div style="background: #faf7f8; border-radius: 10px; padding: 20px; border-left: 4px solid #b31b3b;">
+        <h3 style="font-size: 1.15rem; margin: 0 0 8px 0; color: #800e28;">🌟 Independent Call Girls in <%= city.name %></h3>
+        <p style="margin: 0; font-size: 0.92rem; color: #555;">Strictly self-managed, genuine models offering 100% unfiltered real photos and direct WhatsApp coordination without agency intervention.</p>
+      </div>
+      <div style="background: #faf7f8; border-radius: 10px; padding: 20px; border-left: 4px solid #d4af37;">
+        <h3 style="font-size: 1.15rem; margin: 0 0 8px 0; color: #8a7018;">👑 VIP Escorts in <%= city.name %></h3>
+        <p style="margin: 0; font-size: 0.92rem; color: #555;">High-class companions, air hostesses, college models, and luxury muses available for 5-star hotel visits, private dinners, and executive outcalls.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size: 1.35rem; margin-top: 28px; color: #111;">Why Book Escorts in <%= city.name %> on Sanjana Malhotra?</h3>
+    <ul style="padding-left: 20px; margin-bottom: 24px;">
+      <li><strong>100% Verified Real Photos:</strong> Rigorous identity checks eliminate fake profiles and misleading stock photos.</li>
+      <li><strong>Direct WhatsApp &amp; Call (+91 <%= typeof displayPhone !== 'undefined' ? displayPhone : '6351615378' %>):</strong> Direct communication directly with the model for honest discussion of mutual expectations.</li>
+      <li><strong>Absolute Discretion &amp; Confidentiality:</strong> Your privacy is fully protected at all times across all upscale hotels, suites, and private residences in <%= city.name %>.</li>
+      <li><strong>Zero Advance Fees:</strong> Safe, reliable, and authentic companionship without advance payment traps.</li>
     </ul>
 
-    <h3 style="font-size: 1.35rem; margin-top: 24px; color: #111;">Frequently Asked Questions (FAQs) — Call Girls in <%= city.name %></h3>
+    <h3 style="font-size: 1.35rem; margin-top: 28px; color: #111;">Frequently Asked Questions (FAQs) — Call Girls &amp; Escorts in <%= city.name %></h3>
     
-    <div style="background: #faf7f8; border-radius: 12px; padding: 20px; margin-top: 16px; border: 1px solid #f0e6e9;">
-      <h4 style="margin: 0 0 8px 0; color: #800e28; font-size: 1.1rem;">Q1: How do I book a verified call girl in <%= city.name %>?</h4>
-      <p style="margin: 0 0 16px 0;">Browse the verified profile cards above, choose your favorite companion, and click the direct <strong>WhatsApp button</strong> or Call <a href="tel:<%= typeof pagePhone !== 'undefined' ? pagePhone : '6351615378' %>" style="color: #b31b3b; font-weight: 700;">+91 <%= typeof displayPhone !== 'undefined' ? displayPhone : '6351615378' %></a> to discuss details directly.</p>
+    <div style="background: #faf7f8; border-radius: 12px; padding: 24px; margin-top: 16px; border: 1px solid #f0e6e9;">
+      <h4 style="margin: 0 0 6px 0; color: #800e28; font-size: 1.05rem;">Q1: How can I book a verified call girl in <%= city.name %>?</h4>
+      <p style="margin: 0 0 16px 0;">Browse through the verified profile cards above, select your preferred companion in <%= city.name %>, and click the direct <strong>WhatsApp button</strong> or Call <a href="tel:<%= typeof pagePhone !== 'undefined' ? pagePhone : '6351615378' %>" style="color: #b31b3b; font-weight: 700;">+91 <%= typeof displayPhone !== 'undefined' ? displayPhone : '6351615378' %></a> to book directly with zero middlemen.</p>
       
-      <h4 style="margin: 0 0 8px 0; color: #800e28; font-size: 1.1rem;">Q2: Are the profile photos of <%= city.name %> escorts real?</h4>
-      <p style="margin: 0 0 16px 0;">Yes. All profiles published on Sanjana Malhotra undergo identity and photo verification to ensure what you see is genuine.</p>
+      <h4 style="margin: 0 0 6px 0; color: #800e28; font-size: 1.05rem;">Q2: Are outcall services available to 5-star hotels in <%= city.name %>?</h4>
+      <p style="margin: 0 0 16px 0;">Yes. Independent companions in <%= city.name %> provide discreet outcall services to all recognized 5-star hotels, luxury resorts, and upscale residential suites.</p>
 
-      <h4 style="margin: 0 0 8px 0; color: #800e28; font-size: 1.1rem;">Q3: What areas in <%= city.name %> are covered?</h4>
-      <p style="margin: 0;">Our independent companions are available across all prime locations, luxury 5-star hotels, and residential areas in <%= city.name %> and nearby localities.</p>
+      <h4 style="margin: 0 0 6px 0; color: #800e28; font-size: 1.05rem;">Q3: Are the rates and photos 100% genuine for <%= city.name %> escorts?</h4>
+      <p style="margin: 0;">Yes. Every profile displays genuine pictures, real age, height, languages, and transparent booking information.</p>
     </div>
   </div>
 </section>
 <% } %>
 
 <% if (relatedCategories.length || relatedCities.length) { %>
-<section class="section section--light">
+<section class="section section--light" style="border-top: 1px solid #f0e6e9;">
   <div class="container">
     <div class="section-heading">
       <div>
-        <span class="eyebrow eyebrow--dark">Keep exploring</span>
-        <h2>Explore Other Top Locations & Categories</h2>
+        <span class="eyebrow eyebrow--dark">Internal SEO Mesh</span>
+        <h2>Explore Top Categories &amp; Nearby Cities</h2>
       </div>
     </div>
     <div class="pill-grid">
       <% relatedCategories.forEach(item => { %>
         <a class="city-pill" href="<%= city ? `/${city.slug}/${item.slug}` : `/category/${item.slug}` %>">
-          <strong><%= item.name %> in <%= city ? city.name : 'India' %></strong>
-          <span>Explore →</span>
+          <strong><%= item.name %> Call Girls <%= city ? `in ${city.name}` : '' %></strong>
+          <span>View Profiles →</span>
         </a>
       <% }) %>
       <% relatedCities.forEach(item => { %>
         <a class="city-pill" href="<%= category ? `/${item.slug}/${category.slug}` : `/${item.slug}` %>">
           <strong>Call Girls in <%= item.name %></strong>
-          <span>Explore →</span>
+          <span>View Escorts →</span>
         </a>
       <% }) %>
     </div>
