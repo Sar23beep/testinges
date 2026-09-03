@@ -33,7 +33,14 @@
           <div><dt>Category</dt><dd><%= profile.category.name %></dd></div>
         </dl></section>
         <% } %>
-        <section class="about-profile"><h2>About <%= profile.name %></h2><p class="profile-description"><%= profile.description %></p></section>
+        <section class="about-profile">
+          <h2>About <%= profile.name %></h2>
+          <div class="profile-description">
+            <% (profile.description || '').split(/\n\n+/).forEach(para => { if (para.trim()) { %>
+              <p><%= para.trim() %></p>
+            <% } }) %>
+          </div>
+        </section>
         <% if (profile.tags.length) { %><div class="tag-list"><% profile.tags.forEach(tag => { %><span><%= tag %></span><% }) %></div><% } %>
         <div class="connect-box" id="connect">
           <small>Direct & Independent Contact</small>

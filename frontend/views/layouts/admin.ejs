@@ -21,7 +21,12 @@
 <body>
     <div class="admin-shell">
         <aside class="admin-sidebar" data-admin-sidebar><a class="admin-brand"
-                href="/admin"><span>SM</span><b>Sanjana Malhotra</b><small>Administration</small></a>
+                href="/admin">
+                <picture class="brand__picture">
+                    <source srcset="/images/logo.avif" type="image/avif">
+                    <img src="/images/logo.png" alt="Sanjana Malhotra" class="admin-brand__logo-img">
+                </picture>
+                <b>Sanjana Malhotra</b><small>Administration</small></a>
             <nav><a class="<%= currentPath === '/admin' ? 'active' : '' %>" href="/admin">Overview</a><a
                     class="<%= currentPath.startsWith('/admin/profiles') ? 'active' : '' %>"
                     href="/admin/profiles">Profiles</a><a

@@ -10,7 +10,7 @@
     </nav>
     <span class="eyebrow">100% 18+ Verified Directory</span>
     <h1><%= heading %></h1>
-    <p><%= intro || `Explore 18+ verified call girls and independent escorts in ${city ? city.name : 'India'}. Direct WhatsApp contact on 6351615378.` %></p>
+    <p><%= intro || `Explore 18+ verified call girls and independent escorts in ${city ? city.name : 'India'}. Direct WhatsApp contact on ${typeof displayWhatsapp !== 'undefined' ? displayWhatsapp : '6351615378'}.` %></p>
   </div>
 </section>
 
@@ -60,7 +60,7 @@
     
     <div style="background: #faf7f8; border-radius: 12px; padding: 20px; margin-top: 16px; border: 1px solid #f0e6e9;">
       <h4 style="margin: 0 0 8px 0; color: #800e28; font-size: 1.1rem;">Q1: How do I book a verified call girl in <%= city.name %>?</h4>
-      <p style="margin: 0 0 16px 0;">Browse the verified profile cards above, choose your favorite companion, and click the direct <strong>WhatsApp button</strong> or Call <strong>+91 6351615378</strong> to discuss details directly.</p>
+      <p style="margin: 0 0 16px 0;">Browse the verified profile cards above, choose your favorite companion, and click the direct <strong>WhatsApp button</strong> or Call <a href="tel:<%= typeof pagePhone !== 'undefined' ? pagePhone : '6351615378' %>" style="color: #b31b3b; font-weight: 700;">+91 <%= typeof displayPhone !== 'undefined' ? displayPhone : '6351615378' %></a> to discuss details directly.</p>
       
       <h4 style="margin: 0 0 8px 0; color: #800e28; font-size: 1.1rem;">Q2: Are the profile photos of <%= city.name %> escorts real?</h4>
       <p style="margin: 0 0 16px 0;">Yes. All profiles published on Sanjana Malhotra undergo identity and photo verification to ensure what you see is genuine.</p>

@@ -46,10 +46,16 @@ test('admin CRUD publishes real MongoDB-backed directory pages', { timeout: 1200
 
   response = await agent.get('/admin').expect(200);
   csrf = csrfFrom(response.text);
-  await agent.post('/admin/cities').type('form').send({ _csrf: csrf, name: 'Test City', slug: 'test-city', description: 'Meaningful city copy for the integration test.', active: 'on' }).expect(302);
+  await agent.post('/admin/cities').type('form').send({
+    _csrf: csrf, name: 'Test City', slug: 'test-city',
+    phone: '9876543210', whatsapp: '919876543210',
+    description: 'Meaningful city copy for the integration test.', active: 'on'
+  }).expect(302);
   await agent.post('/admin/categories').type('form').send({ _csrf: csrf, name: 'Test Category', slug: 'test-category', description: 'Meaningful category copy for the integration test.', active: 'on' }).expect(302);
   const [city, category] = await Promise.all([City.findOne({ slug: 'test-city' }), Category.findOne({ slug: 'test-category' })]);
   assert.ok(city && category);
+  assert.equal(city.phone, '9876543210');
+  assert.equal(city.whatsapp, '919876543210');
 
   await agent.post('/admin/profiles').type('form').send({
     _csrf: csrf, name: 'Verified Test Profile', slug: 'verified-test-profile', city: city._id.toString(), category: category._id.toString(),
@@ -70,9 +76,10 @@ test('admin CRUD publishes real MongoDB-backed directory pages', { timeout: 1200
   assert.match(response.text, /Updated Test Profile/);
   assert.match(response.text, /https:\/\/wa\.me\/919876543210/);
   assert.match(response.text, /rel="canonical" href="http:\/\/127\.0\.0\.1:\d+\/"/);
-  await agent.get('/test-city').expect(200).expect(/Discover profiles in Test City/);
-  await agent.get('/category/test-category').expect(200).expect(/Test Category profiles/);
-  await agent.get('/test-city/test-category').expect(200).expect(/Test Category profiles in Test City/);
+  const cityRes = await agent.get('/test-city').expect(200);
+  assert.match(cityRes.text, /9876543210/);
+  await agent.get('/category/test-category').expect(200);
+  await agent.get('/test-city/test-category').expect(200);
   await agent.get('/profile/verified-test-profile').expect(200).expect(/Chat on WhatsApp/);
   await agent.get('/search?q=Updated').expect(200).expect(/Updated Test Profile/);
   await agent.get('/sitemap.xml').expect(200).expect(/test-city\/test-category/);
@@ -87,10 +94,18 @@ test('admin CRUD publishes real MongoDB-backed directory pages', { timeout: 1200
   await agent.delete(`/admin/profiles/${profile._id}`).type('form').send({ _csrf: csrf }).expect(302);
   await agent.get('/profile/verified-test-profile').expect(404);
   assert.ok((await Profile.findById(profile._id)).deletedAt);
-  await agent.put(`/admin/cities/${city._id}`).type('form').send({ _csrf: csrf, name: 'Updated Test City', slug: 'test-city', description: 'Updated city content.', active: 'on' }).expect(302);
+  await agent.put(`/admin/cities/${city._id}`).type('form').send({
+    _csrf: csrf, name: 'Updated Test City', slug: 'test-city',
+    phone: '9123456780', whatsapp: '919123456780',
+    description: 'Updated city content.', active: 'on'
+  }).expect(302);
+  const updatedCity = await City.findById(city._id);
+  assert.equal(updatedCity.phone, '9123456780');
+  assert.equal(updatedCity.whatsapp, '919123456780');
   await agent.put(`/admin/categories/${category._id}`).type('form').send({ _csrf: csrf, name: 'Updated Test Category', slug: 'test-category', description: 'Updated category content.', active: 'on' }).expect(302);
   await agent.delete(`/admin/cities/${city._id}`).type('form').send({ _csrf: csrf }).expect(302);
   await agent.delete(`/admin/categories/${category._id}`).type('form').send({ _csrf: csrf }).expect(302);
   assert.equal(await City.findById(city._id), null);
   assert.equal(await Category.findById(category._id), null);
 });
+

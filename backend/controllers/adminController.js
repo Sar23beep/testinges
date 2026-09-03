@@ -273,6 +273,7 @@ function contentPayload(body) {
   return {
     name: cleanText(body.name, 100), slug: makeSlug(body.slug || body.name), description: cleanText(body.description),
     h1: cleanText(body.h1, 180), seoTitle: cleanText(body.seoTitle, 70), seoDescription: cleanText(body.seoDescription, 170),
+    phone: digitsOnly(body.phone), whatsapp: digitsOnly(body.whatsapp),
     active: checked(body.active), sortOrder: Number.parseInt(body.sortOrder, 10) || 0
   };
 }

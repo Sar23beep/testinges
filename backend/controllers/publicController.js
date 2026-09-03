@@ -7,13 +7,13 @@ const ProfileImage = require('../models/ProfileImage');
 const SeoPage = require('../models/SeoPage');
 const Report = require('../models/Report');
 const { publishedFilter } = require('../utils/publicQuery');
-const { seo, absoluteUrl } = require('../utils/seo');
-const { whatsappUrl } = require('../utils/whatsapp');
+const { seo, absoluteUrl, breadcrumbLd, cityFaqLd, organizationLd } = require('../utils/seo');
+const { whatsappUrl, cityWhatsappUrl, formatDisplayPhone, PRIMARY_WHATSAPP_NUMBER, DEFAULT_CALL_NUMBER } = require('../utils/whatsapp');
 
 const PAGE_SIZE = 12;
 const badgeRank = { VVIP: 0, VIP: 1, HOT: 2, NORMAL: 3 };
 
-async function hydrateProfiles(profiles) {
+async function hydrateProfiles(profiles, contextCity = null) {
   const ids = profiles.map((profile) => profile._id);
   const images = await ProfileImage.find({ profile: { $in: ids } }).sort({ isMain: -1, sortOrder: 1 }).lean();
   const grouped = images.reduce((map, image) => {
@@ -22,7 +22,18 @@ async function hydrateProfiles(profiles) {
     map[key].push(image);
     return map;
   }, {});
-  return profiles.map((profile) => ({ ...profile, images: grouped[String(profile._id)] || [], mainImage: grouped[String(profile._id)]?.[0] || null, whatsappUrl: whatsappUrl(profile.whatsapp, profile.name) }));
+  return profiles.map((profile) => {
+    const activeWhatsapp = (contextCity && contextCity.whatsapp) || profile.city?.whatsapp || profile.whatsapp || PRIMARY_WHATSAPP_NUMBER;
+    const activePhone = (contextCity && contextCity.phone) || profile.city?.phone || profile.phone || DEFAULT_CALL_NUMBER;
+    return {
+      ...profile,
+      phone: activePhone,
+      whatsapp: activeWhatsapp,
+      images: grouped[String(profile._id)] || [],
+      mainImage: grouped[String(profile._id)]?.[0] || null,
+      whatsappUrl: whatsappUrl(activeWhatsapp, profile.name)
+    };
+  });
 }
 
 function pageNumber(value) {
@@ -41,7 +52,7 @@ async function relatedProfiles(profile, limit = 8) {
       ...extraFilter,
       _id: { $nin: excludedIds }
     }))
-      .select('+whatsapp')
+      .select('+whatsapp +phone')
       .populate('city category')
       .sort({ featured: -1, createdAt: -1 })
       .limit(remaining)
@@ -54,7 +65,7 @@ async function relatedProfiles(profile, limit = 8) {
   await appendMatches({ $or: [{ city: profile.city._id }, { category: profile.category._id }] });
   await appendMatches({});
 
-  return hydrateProfiles(selected);
+  return hydrateProfiles(selected, profile.city);
 }
 
 async function home(req, res) {
@@ -62,7 +73,7 @@ async function home(req, res) {
   const [cities, categories, profiles] = await Promise.all([
     City.find({ active: true }).sort({ sortOrder: 1, name: 1 }).limit(20).lean(),
     Category.find({ active: true }).sort({ sortOrder: 1, name: 1 }).limit(20).lean(),
-    Profile.find(filter).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).limit(40).lean()
+    Profile.find(filter).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).limit(40).lean()
   ]);
   const hydrated = await hydrateProfiles(profiles);
   const sortBadge = (items, badge) => items.filter((p) => p.badge === badge).slice(0, 8);
@@ -71,7 +82,7 @@ async function home(req, res) {
     featured: hydrated.filter((p) => p.featured).slice(0, 8),
     vvip: sortBadge(hydrated, 'VVIP'), vip: sortBadge(hydrated, 'VIP'), hot: sortBadge(hydrated, 'HOT'),
     recent: [...hydrated].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 8),
-    jsonLd: { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Sanjana Malhotra', url: absoluteUrl(req, '/'), potentialAction: { '@type': 'SearchAction', target: `${absoluteUrl(req, '/search')}?q={search_term_string}`, 'query-input': 'required name=search_term_string' } }
+    jsonLd: organizationLd(req)
   });
 }
 
@@ -85,7 +96,7 @@ async function search(req, res) {
   if (['NORMAL', 'HOT', 'VIP', 'VVIP'].includes(req.query.badge)) query.badge = req.query.badge;
   if (req.query.featured === 'true') query.featured = true;
   const [profiles, total, cities, categories] = await Promise.all([
-    Profile.find(query).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
+    Profile.find(query).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
     Profile.countDocuments(query), City.find({ active: true }).sort('name').lean(), Category.find({ active: true }).sort('name').lean()
   ]);
   res.render('public/search', {
@@ -100,17 +111,25 @@ async function categoryPage(req, res, next) {
   const page = pageNumber(req.query.page);
   const filter = publishedFilter({ category: category._id });
   const [profiles, total, cities] = await Promise.all([
-    Profile.find(filter).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
+    Profile.find(filter).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
     Profile.countDocuments(filter),
     City.find({ active: true }).sort('name').lean()
   ]);
   const indexable = total > 0;
+  const displayNum = formatDisplayPhone(PRIMARY_WHATSAPP_NUMBER);
   const title = category.seoTitle || `${category.name} Call Girls & Verified Escorts in India | Sanjana Malhotra`;
-  const description = category.seoDescription || `Explore verified ${category.name.toLowerCase()} call girls, VIP models and independent escorts across all major Indian cities. Direct WhatsApp contact on 6351615378.`;
+  const description = category.seoDescription || `Explore verified ${category.name.toLowerCase()} call girls, VIP models and independent escorts across all major Indian cities. Direct WhatsApp contact on ${displayNum}.`;
   const heading = category.h1 || `${category.name} Call Girls & Escorts`;
   res.render('public/listing', {
     seo: seo(req, { title, description, robots: indexable ? 'index,follow' : 'noindex,follow' }),
-    heading, intro: category.description || description, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city: null, category, relatedCities: cities, relatedCategories: [], jsonLd: itemListLd(req, profiles, title)
+    heading, intro: category.description || description, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city: null, category, relatedCities: cities, relatedCategories: [],
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        breadcrumbLd(req, [{ name: 'Home', url: '/' }, { name: category.name, url: `/category/${category.slug}` }]),
+        itemListLd(req, profiles, title)
+      ]
+    }
   });
 }
 
@@ -120,16 +139,32 @@ async function cityPage(req, res, next) {
   const page = pageNumber(req.query.page);
   const filter = publishedFilter({ city: city._id });
   const [profiles, total, categories] = await Promise.all([
-    Profile.find(filter).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
+    Profile.find(filter).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
     Profile.countDocuments(filter), Category.find({ active: true }).sort('name').lean()
   ]);
+  const activeWhatsapp = city.whatsapp || PRIMARY_WHATSAPP_NUMBER;
+  const activePhone = city.phone || DEFAULT_CALL_NUMBER;
+  city.whatsappUrl = cityWhatsappUrl(city);
+  const displayPhoneNum = formatDisplayPhone(activePhone);
+  const displayWhatsappNum = formatDisplayPhone(activeWhatsapp);
   const title = city.seoTitle || `Call Girls in ${city.name} - 100% Genuine Escorts in ${city.name} | Sanjana Malhotra`;
-  const description = city.seoDescription || `Find verified Call Girls in ${city.name} & independent escorts in ${city.name} (${city.state || 'India'}). Real photos, VIP service, direct WhatsApp 6351615378. 100% genuine independent profiles.`;
+  const description = city.seoDescription || `Find verified Call Girls in ${city.name} & independent escorts in ${city.name} (${city.state || 'India'}). Real photos, VIP service, direct WhatsApp ${displayWhatsappNum}. 100% genuine independent profiles.`;
   const heading = city.h1 || `Call Girls in ${city.name} — Verified Escorts & Companions`;
   const intro = city.description || `Explore 18+ verified call girls, independent escorts and luxury companions in ${city.name}. Connect directly with genuine models on WhatsApp with zero middlemen.`;
   res.render('public/listing', {
     seo: seo(req, { title, description, robots: total ? 'index,follow' : 'noindex,follow' }),
-    heading, intro, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city, category: null, relatedCities: [], relatedCategories: categories, jsonLd: itemListLd(req, profiles, title)
+    heading, intro, profiles: await hydrateProfiles(profiles, city), total, page, pages: Math.ceil(total / PAGE_SIZE),
+    city, category: null, relatedCities: [], relatedCategories: categories,
+    pagePhone: activePhone, pageWhatsapp: activeWhatsapp, pageWhatsappUrl: city.whatsappUrl,
+    displayPhone: displayPhoneNum, displayWhatsapp: displayWhatsappNum,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        breadcrumbLd(req, [{ name: 'Home', url: '/' }, { name: city.name, url: `/${city.slug}` }]),
+        cityFaqLd(city.name, displayPhoneNum),
+        itemListLd(req, profiles, title)
+      ]
+    }
   });
 }
 
@@ -142,16 +177,32 @@ async function cityCategoryPage(req, res, next) {
   const page = pageNumber(req.query.page);
   const filter = publishedFilter({ city: city._id, category: category._id });
   const [profiles, total, override] = await Promise.all([
-    Profile.find(filter).select('+whatsapp').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
+    Profile.find(filter).select('+whatsapp +phone').populate('city category').sort({ featured: -1, createdAt: -1 }).skip((page - 1) * PAGE_SIZE).limit(PAGE_SIZE).lean(),
     Profile.countDocuments(filter), SeoPage.findOne({ city: city._id, category: category._id }).lean()
   ]);
+  const activeWhatsapp = city.whatsapp || PRIMARY_WHATSAPP_NUMBER;
+  const activePhone = city.phone || DEFAULT_CALL_NUMBER;
+  city.whatsappUrl = cityWhatsappUrl(city, `Hello, I want to inquire about verified ${category.name} escorts in ${city.name} on Sanjana Malhotra.`);
+  const displayPhoneNum = formatDisplayPhone(activePhone);
+  const displayWhatsappNum = formatDisplayPhone(activeWhatsapp);
   const title = override?.seoTitle || `${category.name} Call Girls in ${city.name} - ${category.name} Escorts in ${city.name} | Sanjana Malhotra`;
-  const description = override?.seoDescription || `Book premium ${category.name.toLowerCase()} call girls in ${city.name} & verified escorts. 100% real photos, direct contact on WhatsApp 6351615378.`;
+  const description = override?.seoDescription || `Book premium ${category.name.toLowerCase()} call girls in ${city.name} & verified escorts. 100% real photos, direct contact on WhatsApp ${displayWhatsappNum}.`;
   const heading = override?.h1 || `${category.name} Call Girls in ${city.name}`;
   const intro = override?.introContent || `Discover high-class ${category.name.toLowerCase()} call girls and escort services in ${city.name}. Safe, verified, and confidential direct booking.`;
   res.render('public/listing', {
     seo: seo(req, { title, description, robots: total && override?.indexable !== false ? 'index,follow' : 'noindex,follow' }),
-    heading, intro, profiles: await hydrateProfiles(profiles), total, page, pages: Math.ceil(total / PAGE_SIZE), city, category, relatedCities: [], relatedCategories: [], jsonLd: itemListLd(req, profiles, title)
+    heading, intro, profiles: await hydrateProfiles(profiles, city), total, page, pages: Math.ceil(total / PAGE_SIZE),
+    city, category, relatedCities: [], relatedCategories: [],
+    pagePhone: activePhone, pageWhatsapp: activeWhatsapp, pageWhatsappUrl: city.whatsappUrl,
+    displayPhone: displayPhoneNum, displayWhatsapp: displayWhatsappNum,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        breadcrumbLd(req, [{ name: 'Home', url: '/' }, { name: city.name, url: `/${city.slug}` }, { name: `${category.name} in ${city.name}`, url: `/${city.slug}/${category.slug}` }]),
+        cityFaqLd(city.name, displayPhoneNum),
+        itemListLd(req, profiles, title)
+      ]
+    }
   });
 }
 
@@ -164,20 +215,59 @@ async function profilePage(req, res, next) {
   ]);
   profile.images = images;
   profile.mainImage = images[0] || null;
-  profile.whatsappUrl = whatsappUrl(profile.whatsapp, profile.name);
-  const title = profile.seoTitle || `${profile.name} (${profile.displayAge || 22} Yrs) - Call Girl in ${profile.area || profile.city.name}, ${profile.city.name} | WhatsApp 6351615378`;
-  const description = profile.seoDescription || `Connect directly with ${profile.name}, 18+ verified independent call girl in ${profile.area || profile.city.name}, ${profile.city.name}. Real photos, verified phone and WhatsApp 6351615378.`;
+  const activeWhatsapp = profile.whatsapp || profile.city?.whatsapp || PRIMARY_WHATSAPP_NUMBER;
+  const activePhone = profile.phone || profile.city?.phone || DEFAULT_CALL_NUMBER;
+  profile.whatsapp = activeWhatsapp;
+  profile.phone = activePhone;
+  profile.whatsappUrl = whatsappUrl(activeWhatsapp, profile.name);
+  const displayWhatsappNum = formatDisplayPhone(activeWhatsapp);
+  const title = profile.seoTitle || `${profile.name} (${profile.displayAge || 22} Yrs) - Call Girl in ${profile.area || profile.city.name}, ${profile.city.name} | WhatsApp ${displayWhatsappNum}`;
+  const description = profile.seoDescription || `Connect directly with ${profile.name}, 18+ verified independent call girl in ${profile.area || profile.city.name}, ${profile.city.name}. Real photos, verified phone and WhatsApp ${displayWhatsappNum}.`;
   res.render('public/profile', {
     seo: seo(req, { title, description, image: profile.seoOgImage || profile.mainImage?.url, type: 'profile' }),
     profile, related, jsonLd: {
-      '@context': 'https://schema.org', '@type': 'ProfilePage', name: title, url: absoluteUrl(req, req.path),
-      mainEntity: { '@type': 'Person', name: profile.name, image: images.map((item) => item.url), description: profile.description }
+      '@context': 'https://schema.org',
+      '@graph': [
+        breadcrumbLd(req, [
+          { name: 'Home', url: '/' },
+          { name: profile.city?.name || 'City', url: `/${profile.city?.slug || ''}` },
+          { name: profile.category?.name || 'Category', url: `/${profile.city?.slug || ''}/${profile.category?.slug || ''}` },
+          { name: profile.name, url: req.path }
+        ]),
+        {
+          '@type': 'ProfilePage',
+          name: title,
+          url: absoluteUrl(req, req.path),
+          mainEntity: {
+            '@type': 'Person',
+            name: profile.name,
+            image: images.map((item) => item.url),
+            description: profile.description,
+            telephone: profile.phone,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: profile.city?.name || '',
+              addressRegion: profile.city?.state || 'India',
+              addressCountry: 'IN'
+            }
+          }
+        }
+      ]
     }
   });
 }
 
 function itemListLd(req, profiles, name) {
-  return { '@context': 'https://schema.org', '@type': 'ItemList', name, itemListElement: profiles.map((p, index) => ({ '@type': 'ListItem', position: index + 1, url: absoluteUrl(req, `/profile/${p.slug}`), name: p.name })) };
+  return {
+    '@type': 'ItemList',
+    name,
+    itemListElement: profiles.map((p, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: absoluteUrl(req, `/profile/${p.slug}`),
+      name: p.name
+    }))
+  };
 }
 
 async function submitReport(req, res) {

@@ -37,6 +37,15 @@ router.get('/google:code([a-zA-Z0-9]+).html', (req, res) => {
   res.type('text/html').send(`google-site-verification: google${req.params.code}.html`);
 });
 
+function xmlEscape(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 router.get('/sitemap.xml', asyncHandler(async (req, res) => {
   const [cities, categories, profiles, images, combinations] = await Promise.all([
     City.find({ active: true }).select('slug updatedAt name').lean(),
@@ -53,7 +62,7 @@ router.get('/sitemap.xml', asyncHandler(async (req, res) => {
 
   // 1. Home Page
   urls.push(`  <url>
-    <loc>${absoluteUrl(req, '/')}</loc>
+    <loc>${xmlEscape(absoluteUrl(req, '/'))}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -62,7 +71,7 @@ router.get('/sitemap.xml', asyncHandler(async (req, res) => {
   // 2. Static Legal & Information Pages
   ['/about', '/terms', '/privacy-policy', '/contact'].forEach((path) => {
     urls.push(`  <url>
-    <loc>${absoluteUrl(req, path)}</loc>
+    <loc>${xmlEscape(absoluteUrl(req, path))}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
@@ -72,7 +81,7 @@ router.get('/sitemap.xml', asyncHandler(async (req, res) => {
   // 3. City Pages
   cities.forEach((city) => {
     urls.push(`  <url>
-    <loc>${absoluteUrl(req, `/${city.slug}`)}</loc>
+    <loc>${xmlEscape(absoluteUrl(req, `/${city.slug}`))}</loc>
     <lastmod>${new Date(city.updatedAt || Date.now()).toISOString()}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -82,7 +91,7 @@ router.get('/sitemap.xml', asyncHandler(async (req, res) => {
   // 4. Category Pages
   categories.forEach((cat) => {
     urls.push(`  <url>
-    <loc>${absoluteUrl(req, `/category/${cat.slug}`)}</loc>
+    <loc>${xmlEscape(absoluteUrl(req, `/category/${cat.slug}`))}</loc>
     <lastmod>${new Date(cat.updatedAt || Date.now()).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -95,7 +104,7 @@ router.get('/sitemap.xml', asyncHandler(async (req, res) => {
     const cat = categoryMap.get(String(item._id.category));
     if (city && cat) {
       urls.push(`  <url>
-    <loc>${absoluteUrl(req, `/${city.slug}/${cat.slug}`)}</loc>
+    <loc>${xmlEscape(absoluteUrl(req, `/${city.slug}/${cat.slug}`))}</loc>
     <lastmod>${new Date(item.updatedAt || Date.now()).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -106,15 +115,16 @@ router.get('/sitemap.xml', asyncHandler(async (req, res) => {
   // 6. Profiles with Google Image Sitemap Tags
   profiles.forEach((profile) => {
     const img = imageMap.get(String(profile._id));
-    const imageTag = img && img.url ? `
+    const rawImgUrl = img && img.url ? (img.url.startsWith('http') ? img.url : absoluteUrl(req, img.url)) : '';
+    const imageTag = rawImgUrl ? `
     <image:image>
-      <image:loc>${img.url.startsWith('http') ? img.url : absoluteUrl(req, img.url)}</image:loc>
-      <image:title>${profile.name || 'Verified Model'}</image:title>
-      <image:caption>${img.alt || `${profile.name} in ${profile.area || ''}`}</image:caption>
+      <image:loc>${xmlEscape(rawImgUrl)}</image:loc>
+      <image:title>${xmlEscape(profile.name || 'Verified Model')}</image:title>
+      <image:caption>${xmlEscape(img.alt || `${profile.name || ''} in ${profile.area || ''}`)}</image:caption>
     </image:image>` : '';
 
     urls.push(`  <url>
-    <loc>${absoluteUrl(req, `/profile/${profile.slug}`)}</loc>
+    <loc>${xmlEscape(absoluteUrl(req, `/profile/${profile.slug}`))}</loc>
     <lastmod>${new Date(profile.updatedAt || Date.now()).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>${imageTag}

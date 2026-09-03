@@ -7,6 +7,8 @@ const citySchema = new mongoose.Schema({
   tier: { type: String, trim: true, maxlength: 50, default: '' },
   areas: [{ type: String, trim: true }],
   description: { type: String, trim: true, maxlength: 5000, default: '' },
+  phone: { type: String, trim: true, maxlength: 24, default: '' },
+  whatsapp: { type: String, trim: true, maxlength: 24, default: '' },
   h1: { type: String, trim: true, maxlength: 180, default: '' },
   seoTitle: { type: String, trim: true, maxlength: 120, default: '' },
   seoDescription: { type: String, trim: true, maxlength: 170, default: '' },

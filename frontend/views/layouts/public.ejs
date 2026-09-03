@@ -26,6 +26,13 @@
   <meta name="description" content="<%= seo.description %>">
   <meta name="robots" content="<%= seo.robots %>">
   <% if (seo.canonical) { %><link rel="canonical" href="<%= seo.canonical %>"><% } %>
+  <meta name="theme-color" content="#0d0f18">
+  <meta name="geo.region" content="IN">
+  <meta name="geo.position" content="20.5937;78.9629">
+  <meta name="ICBM" content="20.5937, 78.9629">
+  <meta name="format-detection" content="telephone=no">
+  <meta property="og:site_name" content="Sanjana Malhotra">
+  <meta property="og:locale" content="en_IN">
   <meta property="og:type" content="<%= seo.type %>">
   <meta property="og:title" content="<%= seo.title %>">
   <meta property="og:description" content="<%= seo.description %>">
@@ -40,7 +47,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/adult-theme.css">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
+  <link rel="alternate icon" href="/images/logo.avif" type="image/avif">
   <% if (jsonLd) { %><script type="application/ld+json"><%- JSON.stringify(jsonLd).replace(/</g, '\\u003c') %></script><% } %>
 </head>
 <body>
@@ -54,19 +63,25 @@
   <%- include('../partials/footer') %>
   
   <!-- Fixed Sticky Bottom CTA Bar (Mobile & Desktop) -->
+  <%
+    const activeCallNumber = (typeof profile !== 'undefined' && profile?.phone) ? profile.phone : (typeof pagePhone !== 'undefined' && pagePhone) ? pagePhone : (typeof city !== 'undefined' && city?.phone) ? city.phone : (typeof primaryPhone !== 'undefined' ? primaryPhone : '6351615378');
+    const displayCall = (typeof displayPhone !== 'undefined' && displayPhone) ? displayPhone : String(activeCallNumber).replace(/^91(?=\d{10})/, '');
+    const activeWhatsappLink = (typeof profile !== 'undefined' && profile?.whatsappUrl) ? profile.whatsappUrl : (typeof pageWhatsappUrl !== 'undefined' && pageWhatsappUrl) ? pageWhatsappUrl : (typeof city !== 'undefined' && city?.whatsappUrl) ? city.whatsappUrl : globalWhatsappUrl;
+    const displayWa = (typeof displayWhatsapp !== 'undefined' && displayWhatsapp) ? displayWhatsapp : ((typeof profile !== 'undefined' && profile?.whatsapp) ? String(profile.whatsapp).replace(/^91(?=\d{10})/, '') : displayCall);
+  %>
   <div class="fixed-bottom-cta-bar" role="region" aria-label="Quick contact bar">
-    <a class="cta-bar-btn cta-bar-btn--call" href="<%= (typeof profile !== 'undefined' && profile?.phone) ? `tel:${profile.phone}` : 'tel:6351615378' %>" title="Call 6351615378">
+    <a class="cta-bar-btn cta-bar-btn--call" href="tel:<%= activeCallNumber %>" title="Call <%= displayCall %>">
       <svg class="cta-bar-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
         <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
       </svg>
-      <span>6351615378</span>
+      <span><%= displayCall %></span>
     </a>
-    <a class="cta-bar-btn cta-bar-btn--whatsapp" href="<%= (typeof profile !== 'undefined' && profile?.whatsappUrl) ? profile.whatsappUrl : globalWhatsappUrl %>" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp 6351615378">
+    <a class="cta-bar-btn cta-bar-btn--whatsapp" href="<%= activeWhatsappLink %>" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp <%= displayWa %>">
       <svg class="cta-bar-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
         <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.477-.15-.677.15-.2.301-.777.978-.953 1.18-.175.201-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.895-.799-1.5-1.786-1.676-2.087-.175-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.2-.301.301-.501.1-.201.05-.376-.025-.527-.075-.15-.677-1.633-.928-2.238-.244-.59-.492-.51-.677-.52l-.577-.01c-.2 0-.527.075-.803.376s-1.053 1.028-1.053 2.508 1.079 2.909 1.229 3.11c.15.201 2.124 3.243 5.145 4.549.719.31 1.28.496 1.718.636.722.23 1.378.197 1.898.12.579-.087 1.78-.728 2.03-1.43.25-.703.25-1.305.175-1.43-.075-.125-.276-.201-.577-.351z"/>
         <path d="M12 2C6.477 2 2 6.477 2 12c0 1.892.524 3.662 1.435 5.178L2 22l4.98-1.39A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.05c-1.626 0-3.14-.478-4.417-1.302l-.317-.204-2.964.827.842-2.887-.225-.339A8.006 8.006 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8.05-8 8.05z"/>
       </svg>
-      <span>WhatsApp - 6351615378</span>
+      <span>WhatsApp - <%= displayWa %></span>
     </a>
   </div>
 

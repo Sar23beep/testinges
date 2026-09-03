@@ -47,7 +47,15 @@ app.use(express.urlencoded({ extended: false, limit: '200kb' }));
 app.use(express.json({ limit: '200kb' }));
 app.use(mongoSanitize({ replaceWith: '_' }));
 app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'frontend', 'public'), { maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0, etag: true }));
+app.use(express.static(path.join(__dirname, 'frontend', 'public'), {
+  maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0,
+  etag: true,
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.avif')) {
+      res.setHeader('Content-Type', 'image/avif');
+    }
+  }
+}));
 
 const sessionOptions = {
   name: 'veloura.sid', secret: process.env.SESSION_SECRET || 'development-only-change-this-secret',
@@ -60,15 +68,16 @@ app.use(session(sessionOptions));
 app.use(ensureCsrfToken);
 app.use(flashMiddleware);
 app.use(loadAdmin);
-const { globalWhatsappUrl, PRIMARY_WHATSAPP_NUMBER } = require('./backend/utils/whatsapp');
+const { globalWhatsappUrl, PRIMARY_WHATSAPP_NUMBER, DEFAULT_CALL_NUMBER } = require('./backend/utils/whatsapp');
 
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
-  res.locals.siteName = 'Veloura';
+  res.locals.siteName = 'Sanjana Malhotra';
   res.locals.currentYear = new Date().getFullYear();
   res.locals.querystring = new URLSearchParams(req.query).toString();
   res.locals.globalWhatsappUrl = globalWhatsappUrl();
   res.locals.primaryWhatsApp = PRIMARY_WHATSAPP_NUMBER;
+  res.locals.primaryPhone = DEFAULT_CALL_NUMBER;
   next();
 });
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 500, standardHeaders: 'draft-8', legacyHeaders: false }));
@@ -89,3 +98,7 @@ if (require.main === module) {
 }
 
 module.exports = app;
+// Ready on port 3000
+
+
+
