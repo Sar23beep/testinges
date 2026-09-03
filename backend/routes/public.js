@@ -139,6 +139,52 @@ ${urls.join('\n')}
 </urlset>`);
 }));
 
+router.get(['/rss.xml', '/feed.xml'], asyncHandler(async (req, res) => {
+  const [cities, profiles] = await Promise.all([
+    City.find({ active: true }).select('slug name updatedAt').limit(50).lean(),
+    Profile.find(publishedFilter()).select('slug name area createdAt description city').populate('city', 'name').sort({ createdAt: -1 }).limit(30).lean()
+  ]);
+
+  const items = [];
+
+  // City items
+  cities.forEach((c) => {
+    items.push(`    <item>
+      <title>${xmlEscape(`Verified Call Girls & Escorts in ${c.name}`)}</title>
+      <link>${xmlEscape(absoluteUrl(req, `/${c.slug}`))}</link>
+      <guid>${xmlEscape(absoluteUrl(req, `/${c.slug}`))}</guid>
+      <pubDate>${new Date(c.updatedAt || Date.now()).toUTCString()}</pubDate>
+      <description>${xmlEscape(`Find 100% genuine call girls, independent escorts and companions in ${c.name}. Direct WhatsApp booking on +91 6351615378.`)}</description>
+    </item>`);
+  });
+
+  // Profile items
+  profiles.forEach((p) => {
+    const cityName = p.city?.name || 'India';
+    items.push(`    <item>
+      <title>${xmlEscape(`${p.name} - Call Girl in ${p.area || cityName}, ${cityName}`)}</title>
+      <link>${xmlEscape(absoluteUrl(req, `/profile/${p.slug}`))}</link>
+      <guid>${xmlEscape(absoluteUrl(req, `/profile/${p.slug}`))}</guid>
+      <pubDate>${new Date(p.createdAt || Date.now()).toUTCString()}</pubDate>
+      <description>${xmlEscape(p.description || `${p.name} verified companion in ${p.area || cityName}. Direct WhatsApp booking.`)}</description>
+    </item>`);
+  });
+
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sanjana Malhotra — Verified Call Girls &amp; Escorts Directory</title>
+    <link>${xmlEscape(absoluteUrl(req, '/'))}</link>
+    <description>100% genuine independent call girls and VIP escorts directory across 180+ Indian cities.</description>
+    <language>en-in</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${xmlEscape(absoluteUrl(req, '/rss.xml'))}" rel="self" type="application/rss+xml" />
+${items.join('\n')}
+  </channel>
+</rss>`);
+}));
+
 router.get('/robots.txt', (req, res) => res.type('text/plain').send(
 `User-agent: *
 Allow: /
