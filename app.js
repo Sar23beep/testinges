@@ -32,9 +32,9 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
       fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com', 'https://*.googletagmanager.com', 'https://*.google-analytics.com'],
-      scriptSrc: ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com', 'https://*.googletagmanager.com', 'https://www.google-analytics.com', 'https://*.google-analytics.com'],
-      connectSrc: ["'self'", 'https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com'],
+      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com', 'https://*.googletagmanager.com', 'https://*.google-analytics.com', 'https://tr.snapchat.com', 'https://*.snapchat.com', 'https://sc-static.net'],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com', 'https://*.googletagmanager.com', 'https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://sc-static.net'],
+      connectSrc: ["'self'", 'https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com', 'https://tr.snapchat.com', 'https://*.snapchat.com', 'https://sc-static.net'],
       frameSrc: ["'self'", 'https://www.googletagmanager.com'],
       frameAncestors: ["'none'"]
     }

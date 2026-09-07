@@ -45,6 +45,22 @@
   <link rel="apple-touch-icon" href="/images/logo.png">
   <link rel="alternate icon" href="/images/logo.avif" type="image/avif">
   <% if (jsonLd) { %><script type="application/ld+json"><%- JSON.stringify(jsonLd).replace(/</g, '\\u003c') %></script><% } %>
+  <% if (currentPath === '/profile/avantika-delhi-aerocity-5' || (typeof profile !== 'undefined' && profile?.slug === 'avantika-delhi-aerocity-5')) { %>
+  <!-- Snap Pixel Code -->
+  <script type='text/javascript'>
+  (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+  {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+  a.queue=[];var s='script';r=t.createElement(s);r.async=!0;
+  r.src=n;var u=t.getElementsByTagName(s)[0];
+  u.parentNode.insertBefore(r,u);})(window,document,
+  'https://sc-static.net/scevent.min.js');
+
+  snaptr('init', 'b761fade-2aef-40c3-8211-05b8ef2f7555', {});
+
+  snaptr('track', 'PAGE_VIEW');
+  </script>
+  <!-- End Snap Pixel Code -->
+  <% } %>
 </head>
 <body>
   <%- include('../partials/header') %>
