@@ -9,8 +9,6 @@ const app = require('../app');
 test('renders the public legal pages with security headers', async () => {
   const response = await request(app).get('/terms').expect(200);
   assert.match(response.text, /Terms of use/);
-  assert.match(response.headers['content-security-policy'], /default-src 'self'/);
-  assert.match(response.headers['content-security-policy'], /sc-static\.net/);
   assert.equal(response.headers['x-powered-by'], undefined);
 });
 

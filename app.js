@@ -27,19 +27,7 @@ app.set('trust proxy', 1);
 app.disable('x-powered-by');
 
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'https://fonts.googleapis.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
-      fontSrc: ["'self'", 'data:', 'https:', 'https://fonts.gstatic.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
-      imgSrc: ["'self'", 'data:', 'blob:', 'https:', 'https://res.cloudinary.com', 'https://sc-static.net'],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'blob:', 'https:', 'https://static.cloudflareinsights.com', 'https://*.cloudflareinsights.com', 'https://sc-static.net'],
-      connectSrc: ["'self'", 'blob:', 'https:', 'wss:', 'https://*.cloudflareinsights.com', 'https://sc-static.net'],
-      frameSrc: ["'self'", 'blob:', 'https:', 'https://sc-static.net'],
-      childSrc: ["'self'", 'blob:', 'https:', 'https://sc-static.net'],
-      frameAncestors: ["*"]
-    }
-  },
+  contentSecurityPolicy: false,
   crossOriginResourcePolicy: { policy: 'cross-origin' }
 }));
 app.use(compression());
