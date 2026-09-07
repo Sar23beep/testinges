@@ -30,14 +30,14 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
-      fontSrc: ["'self'", 'https://fonts.gstatic.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
-      imgSrc: ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com', 'https://*.googletagmanager.com', 'https://*.google-analytics.com', 'https://tr.snapchat.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net', 'https://*.sc-cdn.net'],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'blob:', 'https://www.googletagmanager.com', 'https://*.googletagmanager.com', 'https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://sc-static.net', 'https://*.sc-cdn.net', 'https://*.snapchat.com', 'https://*.snap.com'],
-      connectSrc: ["'self'", 'https://www.google-analytics.com', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com', 'https://tr.snapchat.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net', 'https://*.sc-cdn.net'],
-      frameSrc: ["'self'", 'blob:', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net', 'https://*.sc-cdn.net', 'https://www.googletagmanager.com'],
-      childSrc: ["'self'", 'blob:', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
-      frameAncestors: ["'self'", 'https://*.snapchat.com', 'https://*.snap.com', 'https://ads.snapchat.com', 'https://business.snapchat.com']
+      styleSrc: ["'self'", "'unsafe-inline'", 'https:', 'https://fonts.googleapis.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
+      fontSrc: ["'self'", 'data:', 'https:', 'https://fonts.gstatic.com', 'https://*.snapchat.com', 'https://*.snap.com', 'https://sc-static.net'],
+      imgSrc: ["'self'", 'data:', 'blob:', 'https:', 'https://res.cloudinary.com', 'https://sc-static.net'],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'blob:', 'https:', 'https://sc-static.net'],
+      connectSrc: ["'self'", 'blob:', 'https:', 'wss:', 'https://sc-static.net'],
+      frameSrc: ["'self'", 'blob:', 'https:', 'https://sc-static.net'],
+      childSrc: ["'self'", 'blob:', 'https:', 'https://sc-static.net'],
+      frameAncestors: ["*"]
     }
   },
   crossOriginResourcePolicy: { policy: 'cross-origin' }
