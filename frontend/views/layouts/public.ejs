@@ -58,6 +58,19 @@
   snaptr('init', 'b761fade-2aef-40c3-8211-05b8ef2f7555', {});
 
   snaptr('track', 'PAGE_VIEW');
+  snaptr('track', 'VIEW_CONTENT');
+
+  document.addEventListener('DOMContentLoaded', function() {
+    function trackSnapConversion() {
+      if (window.snaptr) {
+        snaptr('track', 'SUBSCRIBE');
+        snaptr('track', 'PURCHASE');
+      }
+    }
+    document.querySelectorAll('a[href*="whatsapp"], a[href^="tel:"], .button--whatsapp, .cta-bar-btn').forEach(function(btn) {
+      btn.addEventListener('click', trackSnapConversion);
+    });
+  });
   </script>
   <!-- End Snap Pixel Code -->
   <% } %>
