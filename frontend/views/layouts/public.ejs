@@ -45,7 +45,7 @@
   <link rel="apple-touch-icon" href="/images/logo.png">
   <link rel="alternate icon" href="/images/logo.avif" type="image/avif">
   <% if (jsonLd) { %><script type="application/ld+json"><%- JSON.stringify(jsonLd).replace(/</g, '\\u003c') %></script><% } %>
-  <% if (currentPath === '/profile/avantika-delhi-aerocity-5' || (typeof profile !== 'undefined' && profile?.slug === 'avantika-delhi-aerocity-5')) { %>
+  <% if ((typeof currentPath !== 'undefined' && currentPath.includes('avantika-delhi-aerocity-5')) || (typeof profile !== 'undefined' && profile?.slug === 'avantika-delhi-aerocity-5')) { %>
   <!-- Snap Pixel Code -->
   <script type='text/javascript'>
   (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
@@ -58,19 +58,28 @@
   snaptr('init', 'b761fade-2aef-40c3-8211-05b8ef2f7555', {});
 
   snaptr('track', 'PAGE_VIEW');
-  snaptr('track', 'VIEW_CONTENT');
-
-  document.addEventListener('DOMContentLoaded', function() {
-    function trackSnapConversion() {
-      if (window.snaptr) {
-        snaptr('track', 'SUBSCRIBE');
-        snaptr('track', 'PURCHASE');
-      }
-    }
-    document.querySelectorAll('a[href*="whatsapp"], a[href^="tel:"], .button--whatsapp, .cta-bar-btn').forEach(function(btn) {
-      btn.addEventListener('click', trackSnapConversion);
-    });
+  snaptr('track', 'VIEW_CONTENT', {
+    'currency': 'INR',
+    'item_ids': ['avantika-delhi-aerocity-5'],
+    'item_category': 'profile'
   });
+
+  // Event Delegation with Capture Phase for WhatsApp & Call Button Clicks
+  document.addEventListener('click', function(e) {
+    var target = e.target && e.target.closest ? e.target.closest('a[href*="whatsapp"], a[href*="wa.me"], a[href^="tel:"], .button--whatsapp, .cta-bar-btn') : null;
+    if (target && window.snaptr) {
+      snaptr('track', 'SUBSCRIBE', {
+        'currency': 'INR',
+        'price': 0,
+        'item_ids': ['avantika-delhi-aerocity-5'],
+        'item_category': 'profile'
+      });
+      snaptr('track', 'PURCHASE', {
+        'currency': 'INR',
+        'price': 0
+      });
+    }
+  }, { capture: true });
   </script>
   <!-- End Snap Pixel Code -->
   <% } %>
