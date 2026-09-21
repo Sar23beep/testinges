@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Escort Call in Noida — Profile Details</title>
+  <meta name="description" id="pageDesc" content="View verified profile details, real photos, and direct WhatsApp contact in Noida.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" id="canonicalTag" href="https://sanjanamalhotra.in/noida/profile.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" id="ogTitle" content="Escort Call in Noida — Profile">
+  <meta property="og:description" id="ogDesc" content="View verified call girl profile in Noida. Real photos, direct WhatsApp contact.">
+  <meta property="og:url" id="ogUrl" content="https://sanjanamalhotra.in/noida/profile.html">
+  <meta property="og:type" content="profile">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .single-profile-wrap {
+      padding: 30px 0 50px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 7px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill);
+      margin-bottom: 20px;
+    }
+    .back-btn:hover {
+      background: var(--primary-pink);
+      color: #fff;
+    }
+    .profile-single-box {
+      background: var(--bg-card);
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 28px;
+    }
+    @media (max-width: 768px) {
+      .profile-single-box {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-strip">
+    <span class="live-dot"></span>
+    <span>🔥 100% REAL PHOTOS · CASH ON MEETING · ZERO ADVANCE · 15 MIN HOTEL DELIVERY</span>
+  </div>
+
+  <!-- Header (No Logo) -->
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="index.html" class="brand-text-block">
+        <div class="brand-main-title">
+          <span>🔥</span> Escort Call in <span class="pink-accent">Noida</span>
+        </div>
+        <div class="brand-sub">
+          <span>⭐ 100% GENUINE</span> • <span>SECTOR DIRECTORY</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn-header-call">← All Sectors</a>
+        <a href="https://wa.me/916351615378" target="_blank" rel="noopener noreferrer" class="btn-header-wa">
+          <span>WhatsApp Chat</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="single-profile-wrap">
+    <div class="container">
+      <a href="index.html" class="back-btn">← Back to All Noida Sectors</a>
+
+      <div class="profile-single-box" id="profileContent">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Related Sector Profiles -->
+      <div style="margin-top: 40px;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: #fff; margin-bottom: 18px;">
+          More Girls in <span id="relatedSectorTitle" style="color:var(--primary-pink)">This Sector</span>
+        </h3>
+        <div class="listing-grid" id="relatedProfilesGrid"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Bar -->
+  <aside class="sticky-bottom-actions">
+    <a href="tel:6351615378" class="btn-sticky btn-sticky-call">
+      <span>📞 Call 6351615378</span>
+    </a>
+    <a href="#" id="stickyWaBtn" target="_blank" rel="noopener noreferrer" class="btn-sticky btn-sticky-wa">
+      <span>💬 WhatsApp Booking</span>
+    </a>
+  </aside>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <h4>🔥 Escort Call in Noida</h4>
+      <p>© 2026 Escort Call in Noida. 18+ Adults Only. Safe &amp; Independent Companion Directory.</p>
+    </div>
+  </footer>
+
+  <script src="js/profiles-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const profileId = params.get('id') || NOIDA_PROFILES[0].id;
+      const p = NOIDA_PROFILES.find(item => item.id === profileId) || NOIDA_PROFILES[0];
+
+      document.title = `${p.name} (${p.age} Yrs) — Escort Call in Noida ${p.sector}`;
+      document.getElementById('pageTitle').textContent = `${p.name} — Escort Call in Noida ${p.sector}`;
+      // Update canonical and og tags dynamically
+      const canonicalUrl = `https://sanjanamalhotra.in/noida/profile.html?id=${p.id}`;
+      document.getElementById('canonicalTag').setAttribute('href', canonicalUrl);
+      document.getElementById('ogTitle').setAttribute('content', `${p.name} (${p.age} Yrs) — Escort in Noida ${p.sector}`);
+      document.getElementById('ogDesc').setAttribute('content', `${p.bio.substring(0,120)}...`);
+      document.getElementById('ogUrl').setAttribute('content', canonicalUrl);
+      document.getElementById('pageDesc').setAttribute('content', `${p.name} (${p.age} Yrs) verified escort in Noida ${p.sector}. ${p.rateShort} per hour. Real photos on WhatsApp. Zero advance payment.`);
+
+      const waText = encodeURIComponent(`Hello, I want to book verified companion ${p.name} in Noida ${p.sector}. Please share photos and hotel delivery details.`);
+      const waUrl = `https://wa.me/916351615378?text=${waText}`;
+
+      document.getElementById('stickyWaBtn').href = waUrl;
+      document.getElementById('relatedSectorTitle').textContent = p.sector;
+
+      const ribbonClass = p.badge === 'VVIP' ? 'ribbon-vvip' : (p.badge === 'VIP' ? 'ribbon-vip' : 'ribbon-hot');
+
+      document.getElementById('profileContent').innerHTML = `
+        <div>
+          <div class="modal-main-pic">
+            <img src="${p.mainImage}" alt="${p.name}" id="mainProfilePic">
+          </div>
+          <div class="modal-thumb-row">
+            ${p.images.map((img, i) => `
+              <div class="modal-thumb-item ${i === 0 ? 'active' : ''}" onclick="document.getElementById('mainProfilePic').src='${img}'; document.querySelectorAll('.modal-thumb-item').forEach(el=>el.classList.remove('active')); this.classList.add('active');">
+                <img src="${img}" alt="${p.name}">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div>
+          <span class="ribbon-badge ${ribbonClass}" style="position:static; display:inline-block; margin-bottom: 6px;">${p.badge === 'VVIP' ? '👑 VVIP Model' : (p.badge === 'VIP' ? '⭐ VIP Escort' : '🔥 100% Real')}</span>
+          <h1 style="font-family: var(--font-serif); font-size: 2rem; color: #fff; margin-bottom: 4px;">${p.name} (${p.age} Yrs)</h1>
+          <div style="color:var(--accent-gold); font-weight:700; font-size:0.95rem; margin-bottom: 12px;">📍 ${p.locality}, Noida</div>
+
+          <div class="spec-badge-box">
+            <div class="spec-unit"><span>Age:</span> <b>${p.age} Years</b></div>
+            <div class="spec-unit"><span>Height:</span> <b>${p.height}</b></div>
+            <div class="spec-unit"><span>Sector:</span> <b>${p.sector}</b></div>
+            <div class="spec-unit"><span>Category:</span> <b>${p.category}</b></div>
+            <div class="spec-unit"><span>Service:</span> <b>${p.availability}</b></div>
+            <div class="spec-unit"><span>Languages:</span> <b>${p.languages.join(', ')}</b></div>
+          </div>
+
+          <div style="color:var(--text-muted); font-size:0.92rem; line-height:1.6; margin-bottom: 16px;">
+            ${p.bio}
+          </div>
+
+          <div class="price-strip" style="margin-bottom: 16px;">
+            <div>
+              <span class="price-unit">1 Hour (1 Shot)</span>
+              <div class="price-val">${p.rateShort}</div>
+            </div>
+            <div style="text-align: right;">
+              <span class="price-unit">Full Night</span>
+              <div class="price-val" style="color:#ff80b3;">${p.rateNight}</div>
+            </div>
+          </div>
+
+          <div class="modal-cta-buttons">
+            <a href="tel:6351615378" class="btn-big-call">
+              <span>📞 Direct Call (6351615378)</span>
+            </a>
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-big-wa">
+              <span>💬 Book on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      `;
+
+      // Related
+      const related = NOIDA_PROFILES.filter(item => item.id !== p.id && (item.sectorSlug === p.sectorSlug || item.category === p.category)).slice(0, 4);
+      document.getElementById('relatedProfilesGrid').innerHTML = related.map(item => `
+        <article class="escort-card">
+          <div class="card-img-wrapper" onclick="window.location.href='profile.html?id=${item.id}'">
+            <img src="${item.mainImage}" alt="${item.name}" class="card-photo" loading="lazy">
+            <span class="ribbon-badge ${item.badge === 'VVIP' ? 'ribbon-vvip' : 'ribbon-vip'}">${item.badge}</span>
+            <span class="ribbon-sector">${item.sector}</span>
+          </div>
+          <div class="card-details">
+            <h3 class="model-name">${item.name} (${item.age} Yrs)</h3>
+            <div class="card-location">📍 ${item.locality}</div>
+            <div class="price-strip">
+              <div class="price-val">${item.rateShort}</div>
+            </div>
+            <div class="card-dual-actions">
+              <a href="profile.html?id=${item.id}" class="btn-card-call" style="grid-column: 1 / -1;">
+                <span>View Full Profile →</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    });
+  </script>
+</body>
+</html>
